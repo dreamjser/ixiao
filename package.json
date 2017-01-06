@@ -6,6 +6,9 @@
   "repository": "git@github.com:dreamjser/ixiao.git",
   "author": "sunyg <1169771179@qq.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "nodemon app.js & webpack --profile --colors --display-modules"
+  },
   "dependencies": {
     "babel-core": "^6.20.0",
     "babel-loader": "^6.2.10",
@@ -24,7 +27,9 @@
     "gulp-sass": "^3.0.0",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-uglify": "^2.0.0",
+    "keymirror": "^0.1.1",
     "promise-polyfill": "^6.0.2",
+    "pug": "^2.0.0-beta6",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",

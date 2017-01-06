@@ -40,29 +40,7 @@ gulp.task('js', function(){
     ])
     .pipe(concat('framework.js'))
     .pipe(uglify())
-    .pipe(gulp.dest(path.src + 'js/utils'));
+    .pipe(gulp.dest(path.src + 'utils'));
 });
 
-// 启动本地服务器
-gulp.task('connect', function () {
-	connect.server({
-		root: './',
-		port: 8000,
-		livereload: true
-	});
-});
-
-// 开启node服务器
-gulp.task('node', function () {
-	return nodemon({
-		script: 'app.js',
-		ignore:[
-      'node_modules/**',
-      'gulpfile.js'
-    ],
-		env: {
-			'NODE_ENV': 'development'
-		}
-	});
-})
 
