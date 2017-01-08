@@ -1,9 +1,11 @@
-import keyMirror from 'keymirror';
+const ADD_ITEM = 'ADD_ITEM';
+const DELETE_ITEM = 'DELETE_ITEM';
+const CHANGE_TEXT = 'CHANGE_TEXT';
+const FILTER_ITEM = 'FILTER_ITEM';
 
-const types = keyMirror({
-    ADD_ITEM: null,
-    DELETE_ITEM: null,
-    FILTER_ITEM: null
-});
-
-export default types;
+export {
+  ADD_ITEM,
+  DELETE_ITEM,
+  CHANGE_TEXT,
+  FILTER_ITEM
+}

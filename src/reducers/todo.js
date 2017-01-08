@@ -1,22 +1,22 @@
-import types from 'constants/todoActionTypes';
-
-import Immutable from 'immutable';
-
-import initState from 'constants/state';
-
-const {
+import {
   ADD_ITEM,
   DELETE_ITEM,
   FILTER_ITEM,
-} = types;
+} from 'constants/todoActionTypes';
+
+import Immutable from 'immutable';
+import initState from 'constants/state';
 
 const reducers = (state = initState, action) => {
-  switch (action.type){
+  switch (action.type) {
     case ADD_ITEM:
-      return [
-        text: action.text,
-        ...state
-      ]
+      return {
+        todos: [{
+            text: action.text,
+          },
+          ...state.todos
+        ]
+      }
 
     default:
       return state;

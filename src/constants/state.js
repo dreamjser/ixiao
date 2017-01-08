@@ -1,9 +1,9 @@
 import Immutable from 'immutable';
 
-const state = [
-  {
+const state = {
+  todos:[{
     text: '第一个item'
-  }
-];
+  }]
+};
 
 export default state;

@@ -1,11 +1,19 @@
-import { createStore, applyMiddleware } from 'redux';
-// import createLogger from 'redux-logger';
-// import Immutable from 'immutable';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createLogger from 'redux-logger';
 import rootReducer from 'reducers/root';
 
-const store = createStore(
-  rootReducer
-);
+const logger = createLogger();
 
+const composeEnhancers =
+    process.env.NODE_ENV !== 'production'?
+      composeWithDevTools: compose;
+
+const store = createStore(
+  rootReducer,
+  composeEnhancers(
+    applyMiddleware(logger)
+  )
+);
 
 export default store;
