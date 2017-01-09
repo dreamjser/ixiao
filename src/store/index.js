@@ -17,4 +17,13 @@ const store = createStore(
   )
 );
 
+//热替换选项
+if (module.hot) {
+  module.hot.accept('../reducers/root', () => {
+    const nextReducer = require('../reducers/root');
+    console.log(nextReducer);
+    store.replaceReducer(nextReducer)
+  })
+}
+
 export default store;

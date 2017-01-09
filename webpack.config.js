@@ -1,15 +1,14 @@
-const extractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
 
 let config = {
   context: __dirname,
-  entry: 'src/index.js',
+  entry: ['src/index.js', 'webpack-hot-middleware/client',],
   output: {
-    path: __dirname,
-    publicPath: '//s1.dreamjser.com/',
-    filename: 'src/app.js',
+    path: path.resolve(__dirname, 'static'),
+    publicPath: '/static/',
+    filename: 'app.js',
     chunkFilename: 'dist/app-[chunkhash:8].js',
     pathinfo: true
   },
@@ -23,10 +22,8 @@ let config = {
     }]
   },
   plugins: [
-    new webpack.LoaderOptionsPlugin({
-      debug: true
-    }),
-    // new webpack.optimize.CommonsChunkPlugin('common'),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
   resolve: {
     modules: [__dirname, 'node_modules'],
@@ -49,9 +46,6 @@ let config = {
     'react-dom': 'ReactDOM'
   },
   watch: true,
-  devServer:{
-    port: 2000
-  },
   devtool: 'cheap-module-source-map'
 }
 
