@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 import {
 	createAction
 } from 'redux-actions';
@@ -6,7 +8,9 @@ import {
   ADD_ITEM,
   DELETE_ITEM,
   FILTER_ITEM,
-  CHANGE_TEXT
+  CHANGE_TEXT,
+  REQUEST_LIST,
+  RECEIVE_LIST
 } from 'constants/todoActionTypes';
 
 export const addItem = (text) => {
@@ -16,10 +20,27 @@ export const addItem = (text) => {
   }
 }
 
-export const deleteItem = (id) => {
+export const requestList = (isFetching) => {
   return {
-    type: DELETE_ITEM,
-    id
+    type: REQUEST_LIST,
+    isFetching,
+  }
+}
+
+export const receiveList = (isFetching, list) => {
+  return {
+    type: RECEIVE_LIST,
+    isFetching,
+    list
+  }
+}
+
+export const fetchList = () => {
+  return dispatch => {
+    dispatch(requestList(true));
+    return fetch('/data.json')
+      .then(response => response.json())
+      .then(json => dispatch(receiveList(false, json)))
   }
 }
 

@@ -3,17 +3,20 @@ import Todo from 'components/todo';
 
 import {
   addItem,
+  fetchList,
 } from 'actions/todo';
 
 function mapStateToProps(state){
   return {
-    list: state.todo.todos
+    list: state.todo.todos,
+    isFetching: state.todo.isFetching
   }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    onAddItem: (text) => dispatch(addItem(text))
+    onAddItem: text => dispatch(addItem(text)),
+    onRequestList: () => dispatch(fetchList())
   }
 };
 

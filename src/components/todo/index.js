@@ -4,13 +4,21 @@ import TodoHeader from './todoHeader';
 import TodoList from './todoList';
 
 class Todo extends Component{
+  componentWillMount(){
+    const {onRequestList} = this.props;
+    onRequestList();
+  }
   render(){
     const {list, onAddItem} = this.props;
 
     return (
       <div>
         <TodoHeader onAddItem={onAddItem}/>
-        <TodoList list={list}/>
+        {
+          list &&
+          <TodoList list={list}/>
+        }
+
       </div>
     )
   }
