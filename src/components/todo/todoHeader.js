@@ -16,7 +16,7 @@ class TodoHeader extends Component{
   render(){
     return (
       <div>
-        <h1>TodoHeader hhh</h1>
+        <h1>TodoHeader</h1>
         <input type="text" ref='text' />
         <button onClick={this.handleAddItem}>add</button>
       </div>
