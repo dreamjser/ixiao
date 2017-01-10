@@ -6,8 +6,8 @@ let config = {
   context: __dirname,
   entry: ['src/index.js', 'webpack-hot-middleware/client',],
   output: {
-    path: path.resolve(__dirname, 'static'),
-    publicPath: '/static/',
+    path: path.resolve(__dirname, 'src/static'),
+    publicPath: '/src/static/',
     filename: 'app.js',
     chunkFilename: 'dist/app-[chunkhash:8].js',
     pathinfo: true
