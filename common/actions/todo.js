@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch';
+import {getList} from 'api/getlist';
 
 export const ADD_ITEM = 'ADD_ITEM';
 export const addItem = (text) => {
@@ -28,8 +28,7 @@ export const receiveList = (isFetching, list) => {
 export const fetchList = () => {
   return dispatch => {
     dispatch(requestList(true));
-    return fetch('/data.json')
-      .then(response => response.json())
+    return getList()
       .then(json => dispatch(receiveList(false, json)))
   }
 }

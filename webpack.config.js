@@ -4,12 +4,22 @@ const path = require('path');
 
 let config = {
   context: __dirname,
-  entry: ['src/index.js', 'webpack-hot-middleware/client',],
+  entry: {
+    'ixiao': [
+      'client/index.js',
+      'webpack-hot-middleware/client'
+    ],
+    'framework':[
+      'promise-polyfill',
+      'react',
+      'react-dom',
+    ]
+  },
   output: {
-    path: path.resolve(__dirname, 'src/static'),
-    publicPath: '/src/static/',
-    filename: 'app.js',
-    chunkFilename: 'dist/app-[chunkhash:8].js',
+    path: '/static/',
+    publicPath: '/static/',
+    filename: '[name].js',
+    chunkFilename: '/static/[name]-[chunkhash:8].js',
     pathinfo: true
   },
   module: {
@@ -23,28 +33,33 @@ let config = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'framework'
+    }),
   ],
   resolve: {
     modules: [__dirname, 'node_modules'],
     extensions: [".js", ".json", ".jsx"],
     alias: {
-      'components': 'src/components',
-      'routers': 'src/routers',
-      'actions': 'src/actions',
-      'constants': 'src/constants',
-      'reducers': 'src/reducers',
-      'containers': 'src/containers',
-      'store': 'src/store',
+      'components': 'common/components',
+      'routers': 'common/routers',
+      'actions': 'common/actions',
+      'constants': 'common/constants',
+      'reducers': 'common/reducers',
+      'page': 'common/page',
+      'routes': 'common/routes',
+      'store': 'common/store',
+      'api': 'common/api'
     }
   },
   resolveLoader: {
     moduleExtensions: ["-loader"]
   },
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM'
-  },
+  // externals: {
+  //   'react': 'React',
+  //   'react-dom': 'ReactDOM'
+  // },
   watch: true,
   devtool: 'cheap-module-source-map'
 }

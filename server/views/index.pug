@@ -5,6 +5,8 @@ html
     title #{title}
   body
     h1 学习webpack2 ggg
-    div#root
-    script(src="/utils/framework.js")
-    script(src="/app.js")
+    div#root #{html}
+    script.
+      window.__INITIAL_STATE__ = #{initState};
+    script(src="/static/framework.js")
+    script(src="/static/ixiao.js")

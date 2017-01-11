@@ -1,8 +1,19 @@
 {
   "presets": ["env", "react"],
-  "env": {
-    "development": {
-      "presets": ["react-hmre"]
-    }
-  }
+
+  "plugins": [
+    ["module-resolver", {
+      "alias": {
+        "components": "./common/components",
+        "routers": "./common/routers",
+        "actions": "./common/actions",
+        "constants": "./common/constants",
+        "reducers": "./common/reducers",
+        "page": "./common/page",
+        "routes": "./common/routes",
+        "store": "./common/store",
+        "api": "./common/api"
+      }
+    }]
+  ]
 }
