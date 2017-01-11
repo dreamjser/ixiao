@@ -10,19 +10,22 @@ const composeEnhancers =
     process.env.NODE_ENV !== 'production'?
       composeWithDevTools: compose;
 
-const store = createStore(
-  rootReducer,
-  composeEnhancers(
-    applyMiddleware(thunk, logger)
-  )
-);
+export default function configureStore(initState){
+  const store = createStore(
+    rootReducer,
+    initState,
+    composeEnhancers(
+      applyMiddleware(thunk, logger)
+    )
+  );
 
-//热替换选项
-if (module.hot) {
-  module.hot.accept('../reducers', () => {
-    const {nextReducer} = require('../reducers');
-    store.replaceReducer(nextReducer)
-  })
+  //热替换选项
+  if (module.hot) {
+    module.hot.accept('../reducers', () => {
+      const {nextReducer} = require('../reducers');
+      store.replaceReducer(nextReducer)
+    })
+  }
+
+  return store;
 }
-
-export default store;

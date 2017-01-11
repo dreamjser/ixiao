@@ -11,7 +11,6 @@
     "build": "webpack --profile --colors --display-modules"
   },
   "dependencies": {
-    "babel-plugin-module-resolver": "^2.4.0",
     "express": "^4.14.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -21,11 +20,13 @@
     "redux-actions": "^1.2.0",
     "redux-immutable": "^3.0.9",
     "redux-logger": "^2.7.4",
+    "redux-router": "^2.1.2",
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.20.0",
     "babel-loader": "^6.2.10",
+    "babel-plugin-module-resolver": "^2.4.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-preset-env": "^1.1.1",
     "babel-preset-react": "^6.16.0",

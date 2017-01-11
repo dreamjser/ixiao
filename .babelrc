@@ -1,6 +1,10 @@
 {
   "presets": ["env", "react"],
-
+  "env": {
+    "develop": {
+      "presets": ["react-hmre"]
+    }
+  },
   "plugins": [
     ["module-resolver", {
       "alias": {
