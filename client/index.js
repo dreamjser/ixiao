@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory} from 'react-router';
 import { ReduxRouter } from 'redux-router';
 import routes from 'routes';
-import configureStore from 'store';
+import configureStore from 'store/configureStore';
 
 const initState = window.__INITIAL_STATE__ || {};
 const store = configureStore(initState);

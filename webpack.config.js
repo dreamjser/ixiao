@@ -56,11 +56,6 @@ let config = {
 	resolveLoader: {
 		moduleExtensions: ["-loader"]
 	},
-	// externals: {
-	//   'react': 'React',
-	//   'react-dom': 'ReactDOM'
-	// },
-	watch: true,
 	devtool: 'cheap-module-source-map'
 }
 
