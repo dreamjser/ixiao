@@ -7,7 +7,7 @@
   "author": "sunyg <1169771179@qq.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "export NODE_ENV=development && node server/index.js --progress --colors --profile",
+    "dev": "export NODE_ENV=development && nodemon --debug server/index.js --progress --colors --profile",
     "build": "webpack --profile --colors --display-modules"
   },
   "dependencies": {

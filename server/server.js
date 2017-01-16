@@ -51,27 +51,13 @@ if (process.env.NODE_ENV !== 'production') {
 app.set('views', './server/views');
 app.set('view engine', 'pug');
 
-const renderFullPage = (html, initState) => {
-  return `
-    <!doctype html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Isomorphic Redux Example</title>
-      </head>
-      <body>
-        <div id="root">${html}</div>
-        <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(initState)};
-        </script>
-        <script src="/static/framework.js"></script>
-        <script src="/static/ixiao.js"></script>
-      </body>
-    </html>
-  `;
-}
+// 后台管理系统路由
+app.get('/admin', function(req, res){
+  res.render('admin');
+});
 
-app.get("*", function(req, res) {
+// 主站路由
+app.get("/*", function(req, res) {
 
   match({
     routes,
@@ -95,11 +81,14 @@ app.get("*", function(req, res) {
     );
 
     fetchComponentDataBeforeRender(store.dispatch, renderProps.components, renderProps.params)
-      .then(html => {
-        const componentHTML = renderToString(InitView);
-        const initState = store.getState();
+      .then(() => {
+        const html = renderToString(InitView);
+        const initState = JSON.stringify(store.getState());
 
-        res.status(200).end(renderFullPage(componentHTML, initState))
+        res.render('index',{
+          html,
+          initState
+        })
       })
       .catch(err => {
         console.log(err)
@@ -107,9 +96,9 @@ app.get("*", function(req, res) {
       });
 
   });
-
-  // res.render('index');
 });
+
+
 
 app.listen(port, function(error) {
   if (error) {
