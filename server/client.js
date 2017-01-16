@@ -1,6 +1,6 @@
 import express from 'express';
 // 服务器端路由
-import indexRouter from './routes/index-server';
+import indexRouter from './routes/index-client';
 import adminRouter from './routes/admin';
 
 // 开发工具

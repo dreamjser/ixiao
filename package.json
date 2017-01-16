@@ -7,10 +7,10 @@
   "author": "sunyg <1169771179@qq.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "export NODE_ENV=development && nodemon --debug server/index.js",
-    "build": "webpack --profile --colors --display-modules"
+    "dev": "export NODE_ENV=development && nodemon --debug server/index-client.js"
   },
   "dependencies": {
+    "babel-preset-stage-0": "^6.16.0",
     "express": "^4.14.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
