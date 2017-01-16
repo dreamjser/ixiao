@@ -28,7 +28,15 @@ let config = {
       exclude: [
         /node_modules/
       ],
-      use: ['babel']
+      loader: 'babel',
+      options: {
+        "presets": ["env", "react", "stage-0"],
+        "env": {
+          "development": {
+            "presets": ["react-hmre"]
+          }
+        }
+      }
     }]
   },
   plugins: [
