@@ -24,7 +24,7 @@ app.set('view engine', 'pug');
 app.use('/admin', adminRouter);
 
 // 主页面路由
-app.use('/*', indexRouter);
+app.use('/', indexRouter);
 
 app.listen(port, function(error) {
   if (error) {
