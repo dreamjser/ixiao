@@ -30,7 +30,7 @@ import {
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/*', (req, res) => {
   match({
     routes,
     location: req.url

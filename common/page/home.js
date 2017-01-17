@@ -6,7 +6,7 @@ class HomePage extends Component{
   render(){
     return (
       <div>
-        this is HomePage222
+        this is HomePage
         {this.props.children}
         <Navbar/>
       </div>
