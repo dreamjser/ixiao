@@ -17,16 +17,16 @@ import {
 
 import {
  rootReducer
-} from 'reducers';
+} from '../../common/reducers';
 
 // 客户端路由
-import routes from 'routes';
+import routes from '../../common/routes';
 // redux的store生成函数
-import configureStore from 'store/configureStore';
+import configureStore from '../../common/store/configureStore';
 
 import {
  fetchComponentDataBeforeRender
-} from 'api/fetchComponentDataBeforeRender';
+} from '../../common/api/fetchComponentDataBeforeRender';
 
 const router = express.Router();
 

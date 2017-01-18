@@ -2,9 +2,7 @@ import {
   ADD_ITEM,
   REQUEST_LIST,
   RECEIVE_LIST,
-} from 'actions/todo';
-
-import Immutable from 'immutable';
+} from '../actions/todo';
 
 const reducers = (state = {}, action) => {
   switch (action.type) {

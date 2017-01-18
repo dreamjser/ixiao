@@ -1,4 +1,4 @@
-import {getList} from 'api/getlist';
+import {getList} from '../api/getlist';
 
 export const ADD_ITEM = 'ADD_ITEM';
 export const addItem = (text) => {

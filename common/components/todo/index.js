@@ -7,7 +7,7 @@ import TodoList from './todoList';
 import {
   addItem,
   fetchList,
-} from 'actions/todo';
+} from '../../actions/todo';
 
 class Todo extends Component{
   componentWillMount(){

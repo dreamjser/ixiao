@@ -30,7 +30,6 @@ let config = {
       ],
       loader: 'babel',
       options: {
-        "presets": ["env", "react", "stage-0"],
         "env": {
           "development": {
             "presets": ["react-hmre"]
@@ -48,18 +47,7 @@ let config = {
   ],
   resolve: {
     modules: [__dirname, 'node_modules'],
-    extensions: [".js", ".json", ".jsx"],
-    alias: {
-      'components': 'common/components',
-      'routers': 'common/routers',
-      'actions': 'common/actions',
-      'constants': 'common/constants',
-      'reducers': 'common/reducers',
-      'page': 'common/page',
-      'routes': 'common/routes',
-      'store': 'common/store',
-      'api': 'common/api'
-    }
+    extensions: [".js", ".json", ".jsx"]
   },
   resolveLoader: {
     moduleExtensions: ["-loader"]

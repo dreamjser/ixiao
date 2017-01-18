@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import Todo from 'components/todo';
+import Todo from '../components/todo';
 
 class TodoPage extends Component{
   render(){

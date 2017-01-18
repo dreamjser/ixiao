@@ -7,11 +7,12 @@
   "author": "sunyg <1169771179@qq.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "export NODE_ENV=development && node server/index.js"
+    "dev": "NODE_ENV=development nodemon server/index.js"
   },
   "dependencies": {
     "babel-preset-stage-0": "^6.16.0",
     "express": "^4.14.0",
+    "mongoose": "^4.7.7",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",

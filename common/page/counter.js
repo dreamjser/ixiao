@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import Counter from 'components/counter';
+import Counter from '../components/counter';
 
 class CounterPage extends Component{
   render(){
