@@ -1,4 +1,6 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+
 // 服务器端路由
 import indexRouter from './routes/index';
 import adminRouter from './routes/admin';
@@ -15,12 +17,16 @@ import {devMiddleWare, hotMiddleware} from './devtools';
 const app = express();
 const port = 3000;
 
+
 if (process.env.NODE_ENV !== 'production') {
   app.use(devMiddleWare);
   app.use(hotMiddleware);
 } else {
   app.use('/static', express.static(__dirname + '/../dist'));
 }
+
+app.use(bodyParser.json());
+
 
 // 模板
 app.set('views', './server/views');
