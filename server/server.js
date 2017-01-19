@@ -2,7 +2,9 @@ import express from 'express';
 // 服务器端路由
 import indexRouter from './routes/index';
 import adminRouter from './routes/admin';
-import setApiRouter from './routes/api';
+
+// 设置API的路由
+import setApi from './api';
 
 // 链接数据库
 import db from './database/connect.js';
@@ -24,7 +26,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.set('views', './server/views');
 app.set('view engine', 'pug');
 
-setApiRouter(app);
+setApi(app);
 // 后台管理路由
 app.use('/admin', adminRouter);
 

@@ -7,7 +7,7 @@ const compiler = webpack(config);
 
 export const devMiddleWare =
 	webpackDevMiddleware(compiler, {
-		hot: true,
+		quiet: true,
 		stats: {
 			colors: true
 		},

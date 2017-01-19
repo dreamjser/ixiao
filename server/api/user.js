@@ -1,21 +1,22 @@
 import User from '../controllers/user';
 
-console.log(User);
+export default app => {
 
-const setApiRouter = app => {
   app.put('/user', (req, res) => {
     const params = req.query;
 
     User.addUser(params)
-      .then(data => {res.send(data)});
+      .then(data => {
+        res.send(data)
+      });
   });
 
   app.get('/user', (req, res) => {
     const name = req.query.name;
 
     User.getUserByName(name)
-      .then(data => res.render(data));
+      .then(data => {
+        res.send(data)
+      });
   })
 }
-
-export default setApiRouter;
