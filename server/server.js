@@ -2,6 +2,10 @@ import express from 'express';
 // 服务器端路由
 import indexRouter from './routes/index';
 import adminRouter from './routes/admin';
+import setApiRouter from './routes/api';
+
+// 链接数据库
+import db from './database/connect.js';
 
 // 开发工具
 import {devMiddleWare, hotMiddleware} from './devtools';
@@ -20,6 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.set('views', './server/views');
 app.set('view engine', 'pug');
 
+setApiRouter(app);
 // 后台管理路由
 app.use('/admin', adminRouter);
 
