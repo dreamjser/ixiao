@@ -1,4 +1,4 @@
-import setUserApi from './user';
+import setUserApi from './users';
 
 export default app => {
   setUserApi(app);
