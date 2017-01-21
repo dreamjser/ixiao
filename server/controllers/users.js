@@ -9,10 +9,13 @@ export default {
 			.then(data => ({
 				code: 0,
 				data
-			}), err => ({
-				code: 1,
-				err
-			}));
+			}))
+      .catch(err => {
+        if(!('code' in err)){
+          err.code = 1;
+        }
+        return err;
+      });
 	},
 
   // 根据昵称获取用户信息
@@ -23,10 +26,8 @@ export default {
       .then(data => ({
         code: 0,
         data
-      }), err => ({
-        code: 1,
-        err
-      }));
+      }))
+      .catch(err => err);
 	}
 
 }
