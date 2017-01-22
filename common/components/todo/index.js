@@ -1,13 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
 import TodoHeader from './todoHeader';
 import TodoList from './todoList';
-
-import {
-  addItem,
-  fetchList,
-} from '../../actions/todo';
 
 class Todo extends Component{
   componentWillMount(){
@@ -30,22 +24,6 @@ class Todo extends Component{
   }
 }
 
-// container
-function mapStateToProps(state){
-  return {
-    list: state.todo.todos,
-    isFetching: state.todo.isFetching
-  }
-}
+export default Todo;
 
-function mapDispatchToProps(dispatch){
-  return {
-    onAddItem: text => dispatch(addItem(text)),
-    onRequestList: () => dispatch(fetchList())
-  }
-};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Todo);

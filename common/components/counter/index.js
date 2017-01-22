@@ -5,7 +5,7 @@ class Counter extends Component{
   render(){
     return (
       <div>
-        this is counter
+        counter
       </div>
     )
   }

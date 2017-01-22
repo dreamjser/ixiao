@@ -1,13 +1,14 @@
 import { Route, IndexRoute, path } from "react-router";
 import React from "react";
 
-import Home from "../page/home";
-import Counter from "../page/counter";
-import Todo from "../page/todo";
+import App from "../containers/app";
+import Todo from "../containers/todo";
+
+import Counter from "../components/counter";
 import Error404 from "../components/404";
 
 export default (
-  <Route name="home" path="/" component={Home}>
+  <Route name="App" path="/" component={App}>
       <IndexRoute component={Counter} />
       <Route path="Counter" component={Counter} />
       <Route path="todo" component={Todo} />

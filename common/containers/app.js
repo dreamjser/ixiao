@@ -2,16 +2,15 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from '../components/navbar';
 
-class HomePage extends Component{
+class App extends Component{
   render(){
     return (
-      <div>
-        this is HomePage222
+      <div className="ixiao-app">
         {this.props.children}
-        <Navbar/>
+        <Navbar />
       </div>
     )
   }
 }
 
-export default HomePage;
+export default App;
