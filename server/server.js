@@ -37,6 +37,8 @@ app.use('/admin', adminRouter);
 // 主页面路由
 app.use('/', indexRouter);
 
+console.log(process.env.NODE_ENV);
+
 app.listen(port, function(error) {
   if (error) {
     console.error(error)
