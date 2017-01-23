@@ -9,24 +9,22 @@ import adminRouter from './routes/admin';
 import setApi from './api';
 
 // 链接数据库
-import db from './database/connect.js';
+import db from './config/connect.js';
 
 // 开发工具
 import {devMiddleWare, hotMiddleware} from './devtools';
 
-const app = express();
-const port = 3000;
+import config from '../config';
 
+const app = express();
+const port = config.port;
 
 if (process.env.NODE_ENV !== 'production') {
-  app.use(devMiddleWare);
-  app.use(hotMiddleware);
-} else {
-  app.use('/static', express.static(__dirname + '/../dist'));
+  app.use(devMiddleWare());
+  app.use(hotMiddleware());
 }
 
 app.use(bodyParser.json());
-
 
 // 模板
 app.set('views', './server/views');

@@ -1,0 +1,49 @@
+const webpack = require('webpack');
+const deepAssign = require('deep-assign');
+
+let webpackConfig = require('./webpack.base.js');
+
+webpackConfig = deepAssign(webpackConfig, {
+  entry: {
+    'ixiao': [
+      'client/index.js',
+      'webpack-hot-middleware/client'
+    ]
+  },
+  output: {
+    publicPath: '/static/src',
+    pathinfo: true
+  },
+  module: {
+    rules: [{
+      test: /\.(js|jsx)$/,
+      exclude: [
+        /node_modules/
+      ],
+      loader: 'babel',
+      options: {
+        'env': {
+          'development': {
+            'presets': ['react-hmre']
+          }
+        }
+      }
+    }, {
+      test: /\.scss/,
+      exclude: [
+        /node_modules/
+      ],
+      use: ['style?sourceMap', 'css?sourceMap', 'sass?sourceMap']
+    }]
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'framework'
+    }),
+  ],
+  devtool: 'cheap-module-source-map'
+});
+
+module.exports = webpackConfig;

@@ -3,11 +3,12 @@ html
   head
     meta(charset="utf-8")
     title 爱笑网-让你每天都爱笑
+    link(rel="stylesheet" href=assetsObject['css/ixiao.css'])
   body
     h1 学习webpack2 gg
     div#root
       div !{html}
     script.
       window.__INITIAL_STATE__ = !{initState};
-    script(src="/static/framework.js")
-    script(src="/static/ixiao.js")
+    script(src=assetsObject['js/framework.js'])
+    script(src=assetsObject['js/ixiao.js'])

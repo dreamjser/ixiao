@@ -28,6 +28,9 @@ import {
  fetchComponentDataBeforeRender
 } from '../../common/api/fetchComponentDataBeforeRender';
 
+// assets.json
+import assetsObject from '../config/assets.js';
+
 const router = express.Router();
 
 router.get('*', (req, res) => {
@@ -59,14 +62,16 @@ router.get('*', (req, res) => {
 
         res.render('index', {
           html,
-          initState
+          initState,
+          assetsObject
         })
       })
       .catch(err => {
         console.log(err)
         res.render('index', {
           html: '',
-          initState: JSON.stringify({})
+          initState: JSON.stringify({}),
+          assetsObject
         })
       });
   });
