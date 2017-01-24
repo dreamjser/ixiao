@@ -69,7 +69,7 @@ gulp.task('rev', function () {
 
 // 删除assets.json的图片和字体映射
 gulp.task('replace:json', function () {
-  return gulp.src('../blog/assets.json')
+  return gulp.src('server/assets.json')
     .pipe(replace(/\s*\".+\.(gif|jpe?g|png|woff2?|ttf|svg|eot)\":\s\".+\.(gif|jpe?g|png|woff2?|ttf|svg|eot)\",?/gi, ''))
     .pipe(gulp.dest('server'));
 });
