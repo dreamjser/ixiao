@@ -1,0 +1,9 @@
+@import '../../../static/src/sass/base/_variables';
+@import '../../../static/src/sass/base/_mixins';
+
+.navbar{
+  display: flex;
+  &>li{
+    flex: 1;
+  }
+}

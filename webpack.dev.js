@@ -33,7 +33,13 @@ webpackConfig = deepAssign(webpackConfig, {
       exclude: [
         /node_modules/
       ],
-      use: ['style?sourceMap', 'css?sourceMap', 'sass?sourceMap']
+      use: ['style?sourceMap', 'css?sourceMap', 'postcss', 'sass?sourceMap']
+    },{
+      test: /\.(jpg|png|gif|eot|svg|ttf|woff)$/,
+      exclude: [
+        /node_modules/
+      ],
+      loader: 'url'
     }]
   },
   plugins: [

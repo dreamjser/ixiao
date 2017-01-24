@@ -31,6 +31,7 @@
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
+    "autoprefixer": "^6.7.0",
     "babel-core": "^6.20.0",
     "babel-loader": "^6.2.10",
     "babel-plugin-react-transform": "^2.0.2",
@@ -50,12 +51,15 @@
     "gulp-rev": "^7.1.2",
     "gulp-rev-css-url": "^0.1.0",
     "node-sass": "^4.3.0",
+    "postcss-loader": "^1.2.2",
+    "postcss-pxtorem": "^4.0.0",
     "pug": "^2.0.0-beta6",
     "react-transform-hmr": "^1.0.4",
     "redux-devtools-extension": "^1.0.0",
     "run-sequence": "^1.2.2",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "v2.2.0-rc.0",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.15.0"

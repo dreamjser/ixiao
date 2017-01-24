@@ -28,6 +28,12 @@ webpackConfig = deepAssign(webpackConfig, {
         /node_modules/
       ],
       loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+    },{
+      test: /\.(jpg|png|gif|eot|svg|ttf|woff)$/,
+      exclude: [
+        /node_modules/
+      ],
+      loader: 'url'
     }]
   },
   plugins: [
