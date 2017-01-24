@@ -44,7 +44,9 @@ webpackConfig = deepAssign(webpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'framework'
     }),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      comments: false
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
