@@ -5,8 +5,10 @@ import Navbar from '../components/navbar';
 class App extends Component{
   render(){
     return (
-      <div className="ixiao-app">
-        {this.props.children}
+      <div className="ixiao">
+        <div className="wrap">
+          {this.props.children}
+        </div>
         <Navbar />
       </div>
     )

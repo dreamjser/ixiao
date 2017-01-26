@@ -3,7 +3,27 @@
 
 .navbar{
   display: flex;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: #222;
   &>li{
     flex: 1;
+    text-align: center;
+  }
+  .iconfont{
+    font-size: 36px;
+  }
+  a{
+    display: block;
+    padding: 8px 0;
+    color: #fff;
+  }
+  .active>a{
+    color: #fcd606;
+  }
+  p{
+    font-size: 20px;
+    margin-top: 4px;
   }
 }
