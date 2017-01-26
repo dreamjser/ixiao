@@ -4,12 +4,13 @@ import Navbar from '../components/navbar';
 
 class App extends Component{
   render(){
+    const pathname = this.props.location.pathname;
     return (
       <div className="ixiao">
         <div className="wrap">
           {this.props.children}
         </div>
-        <Navbar />
+        <Navbar pathname = {pathname} />
       </div>
     )
   }
