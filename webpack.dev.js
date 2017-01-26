@@ -27,30 +27,30 @@ webpackConfig = deepAssign(webpackConfig, {
             'presets': ['react-hmre']
           }
         },
-        'plugins': [
-          ["import", [{
-            "style": "css",
-            "libraryName": "antd-mobile"
-          }]]
-        ]
+        // 'plugins': [
+        //   ["import", [{
+        //     "style": "css",
+        //     "libraryName": "antd-mobile"
+        //   }]]
+        // ]
       }
-    }, {
+    }, /*{
       test: /\.css/,
-      // exclude: [
-      //   /node_modules/
-      // ],
+      exclude: [
+        /node_modules/
+      ],
       use: ['style?sourceMap', 'css?sourceMap', 'postcss']
-    },{
+    },*/ {
       test: /\.scss/,
-      // exclude: [
-      //   /node_modules/
-      // ],
+      exclude: [
+        /node_modules/
+      ],
       use: ['style?sourceMap', 'css?sourceMap', 'postcss', 'sass?sourceMap']
     }, {
       test: /\.(jpg|png|gif|eot|svg|ttf|woff)$/,
-      // exclude: [
-      //   /node_modules/
-      // ],
+      exclude: [
+        /node_modules/
+      ],
       loader: 'url'
     }]
   },
