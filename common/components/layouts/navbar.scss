@@ -2,14 +2,16 @@
 @import '../../../static/src/sass/base/_mixins';
 
 .navbar{
-  display: flex;
   position: fixed;
   width: 100%;
   bottom: 0;
   background-color: #222;
-  &>li{
-    flex: 1;
-    text-align: center;
+  ul{
+    display: flex;
+    &>li{
+      flex: 1;
+      text-align: center;
+    }
   }
   .iconfont{
     font-size: 36px;
