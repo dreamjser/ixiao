@@ -31,10 +31,12 @@
     margin: 100px auto 0;
   }
   .users-item{
-    padding: 8px 12px;
-    margin-bottom: 40px;
+    padding: 12px;
+    margin-bottom: 48px;
     border: 1px $border-color solid;
     input{
+      margin-left: 20px;
+      font-size: 32px;
       border: none;
     }
     i{

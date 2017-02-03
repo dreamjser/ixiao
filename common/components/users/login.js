@@ -21,6 +21,9 @@ class Login extends Component{
             <i className="iconfont icon-password"></i>
             <input type="text"/>
           </div>
+          <div className="users-submit">
+            <a href="javascript:;" className="btn">登录</a>
+          </div>
         </div>
       </div>
     )

@@ -1,5 +1,20 @@
+@import './variables';
+
 .wrap{
   width: 640px;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+.btn{
+  display: block;
+  padding: 20px 0;
+  font-size: 40px;
+  color: #fff;
+  background-color: $blue-color;
+  border-radius: 8px;
+  text-align: center;
+  &:active{
+    background-color: #058afd;
+  }
 }
