@@ -17,9 +17,9 @@ webpackConfig = deepAssign(webpackConfig, {
   module: {
     rules: [{
       test: /\.(js|jsx)$/,
-      // exclude: [
-      //   /node_modules/
-      // ],
+      exclude: [
+        /node_modules/
+      ],
       loader: 'babel',
       options: {
         'env': {
@@ -27,20 +27,8 @@ webpackConfig = deepAssign(webpackConfig, {
             'presets': ['react-hmre']
           }
         },
-        // 'plugins': [
-        //   ["import", [{
-        //     "style": "css",
-        //     "libraryName": "antd-mobile"
-        //   }]]
-        // ]
       }
-    }, /*{
-      test: /\.css/,
-      exclude: [
-        /node_modules/
-      ],
-      use: ['style?sourceMap', 'css?sourceMap', 'postcss']
-    },*/ {
+    },{
       test: /\.scss/,
       exclude: [
         /node_modules/

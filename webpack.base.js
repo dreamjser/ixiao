@@ -16,7 +16,7 @@ let webpackConfig = {
   },
   resolve: {
     modules: [__dirname, 'node_modules'],
-    extensions: ['.web.js', '.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
   },
   resolveLoader: {
     moduleExtensions: ['-loader']

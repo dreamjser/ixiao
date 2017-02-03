@@ -3,7 +3,20 @@ html
   head
     meta(charset="utf-8")
     title 爱笑网-让你每天都爱笑
-    <meta name="hotcss" content="initial-dpr=1;max-width=640" />
+    meta(name="hotcss" content="initial-dpr=1;max-width=640")
+    meta(name="renderer" content="webkit")
+    meta(name="applicable-device" content="pc,mobile")
+    meta(name="description" content="爱笑网-让你每天都爱笑")
+    meta(name="keywords" content="爱笑,段子,笑话,内涵段子")
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="apple-touch-fullscreen" content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style" content="black")
+    meta(name="format-detection" content="telephone=no,email=no")
+    link(rel="icon" href=assetsObject['icon.png'] type="image/png")
+    link(size="57*57" href=assetsObject['icon.png'] rel="apple-touch-icon-precomposed")
+    link(size="72*72" href=assetsObject['icon.png'] rel="apple-touch-icon-precomposed")
+    link(size="114 *114" href=assetsObject['icon.png'] rel="apple-touch-icon-precomposed")
+    link(size="144*144" href=assetsObject['icon.png'] rel="apple-touch-icon-precomposed")
     include tpl/_flex.pug
     link(rel="stylesheet" href=assetsObject['css/ixiao.css'])
   body

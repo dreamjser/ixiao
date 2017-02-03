@@ -22,6 +22,7 @@ const port = config.port;
 if (process.env.NODE_ENV !== 'production') {
   app.use(devMiddleWare());
   app.use(hotMiddleware());
+  app.use('/static', express.static('static'));
 }
 
 app.use(bodyParser.json());

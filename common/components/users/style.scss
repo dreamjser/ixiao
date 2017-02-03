@@ -1,0 +1,44 @@
+@import '../../../static/src/sass/base/_variables';
+@import '../../../static/src/sass/base/_mixins';
+
+.users{
+  menu{
+    display: flex;
+    a{
+      display: block;
+      padding: 20px 0;
+      flex: 1;
+      color: $font-color;
+      text-align: center;
+      font-size: 36px;
+      border-bottom: 1px #ddd solid;
+      span{
+        display: block;
+      }
+      &:first-child{
+        span{
+          border-right: 1px #ddd solid;
+        }
+      }
+    }
+    .active{
+      border-bottom: 6px $blue-color solid;
+    }
+  }
+
+  .users-form{
+    width: 560px;
+    margin: 100px auto 0;
+  }
+  .users-item{
+    padding: 8px 12px;
+    margin-bottom: 40px;
+    border: 1px $border-color solid;
+    input{
+      border: none;
+    }
+    i{
+      font-size: 32px;
+    }
+  }
+}

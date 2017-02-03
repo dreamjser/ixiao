@@ -27,7 +27,7 @@ webpackConfig = deepAssign(webpackConfig, {
       exclude: [
         /node_modules/
       ],
-      loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+      loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', 'sass-loader'])
     },{
       test: /\.(jpg|png|gif|eot|svg|ttf|woff)$/,
       exclude: [

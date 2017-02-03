@@ -12,7 +12,7 @@ export default app => {
 
   // POST: /user
   // params :{email,nickname,password}
-  app.post('/user', (req, res) => {
+  app.post('/register', (req, res) => {
     const params = req.body;
     User.addUser(params)
       .then(r => res.send(r));

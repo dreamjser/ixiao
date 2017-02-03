@@ -1,5 +1,6 @@
 {
-  "css/ixiao.css": "/static/src/css/ixiao.css",
+  "css/ixiao.css": "",
   "js/framework.js": "/static/src/js/framework.js",
-  "js/ixiao.js": "/static/src/js/ixiao.js"
+  "js/ixiao.js": "/static/src/js/ixiao.js",
+  "icon.png": "/static/src/icon.png"
 }
