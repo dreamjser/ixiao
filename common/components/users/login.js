@@ -15,11 +15,11 @@ class Login extends Component{
         <div className="users-form">
           <div className="users-item">
             <i className="iconfont icon-my"></i>
-            <input type="text"/>
+            <input type="text" placeholder="*邮箱" />
           </div>
           <div className="users-item">
             <i className="iconfont icon-password"></i>
-            <input type="text"/>
+            <input type="password" placeholder="*密码" />
           </div>
           <div className="users-submit">
             <a href="javascript:;" className="btn">登录</a>

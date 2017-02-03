@@ -15,15 +15,15 @@ class Register extends Component{
         <div className="users-form">
           <div className="users-item">
             <i className="iconfont icon-my"></i>
-            <input type="text"/>
+            <input type="text" placeholder="*请输入邮箱"/>
           </div>
           <div className="users-item">
             <i className="iconfont icon-password"></i>
-            <input type="text"/>
+            <input type="password" placeholder="*请输入密码"/>
           </div>
           <div className="users-item">
             <i className="iconfont icon-password"></i>
-            <input type="text"/>
+            <input type="password" placeholder="*请确认密码"/>
           </div>
           <div className="users-submit">
             <a href="javascript:;" className="btn">注册</a>
