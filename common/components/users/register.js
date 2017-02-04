@@ -2,34 +2,15 @@ import './style.scss';
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Link} from 'react-router';
+import RegisterForm from './registerForm';
 
 class Register extends Component{
+  handleSubmit(values){
+    console.log(values);
+  }
   render(){
     return (
-      <div className="users">
-        <menu>
-          <Link to="/login"><span>登录</span></Link>
-          <Link to="/register" className="active"><span>注册</span></Link>
-        </menu>
-        <div className="users-form">
-          <div className="users-item">
-            <i className="iconfont icon-my"></i>
-            <input type="text" placeholder="*请输入邮箱"/>
-          </div>
-          <div className="users-item">
-            <i className="iconfont icon-password"></i>
-            <input type="password" placeholder="*请输入密码"/>
-          </div>
-          <div className="users-item">
-            <i className="iconfont icon-password"></i>
-            <input type="password" placeholder="*请确认密码"/>
-          </div>
-          <div className="users-submit">
-            <a href="javascript:;" className="btn">注册</a>
-          </div>
-        </div>
-      </div>
+      <RegisterForm onSubmit={this.handleSubmit.bind(this)} />
     )
   }
 }

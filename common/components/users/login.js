@@ -2,30 +2,15 @@ import './style.scss';
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Link} from 'react-router';
+import LoginForm from './loginForm';
 
 class Login extends Component{
+  handleSubmit(values){
+    console.log(values);
+  }
   render(){
     return (
-      <div className="users">
-        <menu>
-          <Link to="/login" className="active"><span>登录</span></Link>
-          <Link to="/register"><span>注册</span></Link>
-        </menu>
-        <div className="users-form">
-          <div className="users-item">
-            <i className="iconfont icon-my"></i>
-            <input type="text" placeholder="*邮箱" />
-          </div>
-          <div className="users-item">
-            <i className="iconfont icon-password"></i>
-            <input type="password" placeholder="*密码" />
-          </div>
-          <div className="users-submit">
-            <a href="javascript:;" className="btn">登录</a>
-          </div>
-        </div>
-      </div>
+      <LoginForm onSubmit={this.handleSubmit.bind(this)} />
     )
   }
 }
