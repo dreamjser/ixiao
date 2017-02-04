@@ -1,18 +1,26 @@
 import './style.scss';
 
-import React, {Component} from 'react';
+import React, {
+	Component
+} from 'react';
+
 import ReactDOM from 'react-dom';
-import {Link} from 'react-router';
 
-class Navbar extends Component{
-  render(){
-    const setTagClass = {};
-    const {pathname} = this.props;
+import {
+	Link
+} from 'react-router';
 
-    setTagClass[pathname] = 'active';
+class Navbar extends Component {
+	render() {
+		const setTagClass = {};
+		const {
+			pathname
+		} = this.props;
 
-    return (
-      <nav className="navbar">
+		setTagClass[pathname] = 'active';
+
+		return (
+			<nav className="navbar">
         <ul>
           <li className={setTagClass['/'] || ''}>
             <Link to="/">
@@ -41,8 +49,8 @@ class Navbar extends Component{
         </ul>
       </nav>
 
-    )
-  }
+		)
+	}
 }
 
 export default Navbar;

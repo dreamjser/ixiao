@@ -1,9 +1,12 @@
-import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
-import todo from './todo';
+import {
+	combineReducers
+} from 'redux';
+import {
+	reducer as formReducer
+} from 'redux-form';
+import register from './register';
 
 export const rootReducer = combineReducers({
-  todo,
-  form: formReducer
+	register,
+	form: formReducer
 })
-

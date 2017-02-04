@@ -13,7 +13,6 @@ const UserSchema = new Schema({
   nickname: {
     type: String,
     index: true,
-    unique: true,
     trim: true,
     match: [/^.{2,8}$/, '昵称为2-8位的字符'],
   },
