@@ -14,7 +14,7 @@ const validate = values => {
 
 	if (!values.email) {
 		errors.email = '请填写邮箱';
-	} else if (!/^[\w-.]+@[\w-]+(.[a-zA-Z0-9]+)+$/.test(values.email)) {
+	} else if (!/^[\w-.]+@[\w-]+(\.[a-zA-Z0-9]+)+$/.test(values.email)) {
 		errors.email = '邮箱格式错误';
 	}
 
