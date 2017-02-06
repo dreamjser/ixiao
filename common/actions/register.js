@@ -1,4 +1,4 @@
-import usersApi from '../api/users';
+import doRegister from '../api/doRegister';
 
 export const REQUEST_REGISTER = 'REQUEST_REGISTER';
 export const requestRegister = (isFetching) => {
@@ -20,7 +20,7 @@ export const responseRegister = (isFetching, data) => {
 export const fetchRegister = params => {
 	return dispatch => {
 		dispatch(requestRegister(true));
-		return usersApi.register(params)
+		return doRegister(params)
 			.then(json => dispatch(responseRegister(false, json)))
 	}
 }

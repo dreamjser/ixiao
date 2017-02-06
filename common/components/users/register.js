@@ -5,7 +5,6 @@ import React, {
 } from 'react';
 import ReactDOM from 'react-dom';
 import RegisterForm from './registerForm';
-import usersApi from '../../api/users';
 
 class Register extends Component {
 	handleSubmit(onRegister, values) {

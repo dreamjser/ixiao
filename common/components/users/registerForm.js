@@ -12,8 +12,9 @@ import {
 	emailValidation,
 	passwordValidation
 } from '../../constants/validation';
+import Token from '../../containers/token';
 import Loading from '../../components/loading';
-import usersApi from '../../api/users';
+import checkEmailUnique from '../../api/checkEmailUnique';
 
 // 验证邮箱和密码
 const validate = values => {
@@ -42,7 +43,7 @@ const validate = values => {
 
 // 异步验证邮箱是否已注册
 const asyncValidate = values => {
-	return usersApi.checkEmailUnique(values.email)
+	return checkEmailUnique(values.email)
 		.then(res => {
 			if (res.data !== null) {
 				throw {
@@ -101,6 +102,7 @@ class RegisterForm extends Component {
           </Link>
         </menu>
         <form className="users-form" onSubmit={handleSubmit}>
+          <Token name="token" />
           <Field
             name="email"
             type="text"
