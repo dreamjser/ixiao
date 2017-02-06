@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import session from 'express-session';
 
 // 服务器端路由
 import indexRouter from './routes/index';
@@ -12,7 +13,10 @@ import setApi from './api';
 import db from './config/connect.js';
 
 // 开发工具
-import {devMiddleWare, hotMiddleware} from './devtools';
+import {
+	devMiddleWare,
+	hotMiddleware
+} from './devtools';
 
 import config from '../config';
 
@@ -20,10 +24,19 @@ const app = express();
 const port = config.port;
 
 if (process.env.NODE_ENV !== 'production') {
-  app.use(devMiddleWare());
-  app.use(hotMiddleware());
-  app.use('/static', express.static('static'));
+	app.use(devMiddleWare());
+	app.use(hotMiddleware());
+	app.use('/static', express.static('static'));
 }
+
+app.use(session({
+  secret: 'ixiao',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 10 * 60 * 1000
+  }
+}));
 
 app.use(bodyParser.json());
 
@@ -40,10 +53,10 @@ app.use('/', indexRouter);
 
 console.log(process.env.NODE_ENV);
 
-app.listen(port, function(error) {
-  if (error) {
-    console.error(error)
-  } else {
-    console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
-  }
+app.listen(port, function (error) {
+	if (error) {
+		console.error(error)
+	} else {
+		console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
+	}
 })
