@@ -2,15 +2,15 @@ import User from '../controllers/users';
 
 export default app => {
 
-  // GET: /user/nickname
-	app.get('/user/:nickname', (req, res, next) => {
-		const nickname = req.params.nickname;
+  // GET: /checkEmailUnique?email=xxxx
+	app.get('/checkEmailUnique', (req, res, next) => {
+		const email = req.query.email;
 
-		User.getUserByNickname(nickname)
+		User.getUserByEmail(email)
 			.then(r => res.send(r));
 	});
 
-  // POST: /user
+  // POST: /register
   // params :{email,nickname,password}
   app.post('/register', (req, res) => {
     const params = req.body;

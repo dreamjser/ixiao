@@ -1,7 +1,6 @@
 import User from '../models/users';
 
 export default {
-
   // 添加用户
 	addUser(params) {
 		const user = new User(params);
@@ -18,10 +17,10 @@ export default {
       });
 	},
 
-  // 根据昵称获取用户信息
-	getUserByNickname(nickname) {
+  // 根据email获取用户信息
+	getUserByEmail(email) {
 		return User.findOne({
-			nickname: nickname
+			email: email
 		}).exec()
       .then(data => ({
         code: 0,

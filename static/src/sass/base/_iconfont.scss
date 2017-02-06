@@ -15,6 +15,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-back:before { content: "\e697"; }
+
+.icon-close:before { content: "\e69a"; }
+
+.icon-less:before { content: "\e6a5"; }
+
+.icon-moreunfold:before { content: "\e6a6"; }
+
+.icon-more:before { content: "\e6a7"; }
+
+.icon-selected:before { content: "\e6ad"; }
+
 .icon-work:before { content: "\e6e6"; }
 
 .icon-password:before { content: "\e6e7"; }

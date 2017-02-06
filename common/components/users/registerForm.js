@@ -8,27 +8,48 @@ import {
 	Field,
 	reduxForm
 } from 'redux-form';
+import {
+	emailValidation,
+	passwordValidation
+} from '../../constants/validation';
+import Loading from '../../components/loading';
+import usersApi from '../../api/users';
 
+// 验证邮箱和密码
 const validate = values => {
 	const errors = {};
 
 	if (!values.email) {
-		errors.email = '请填写邮箱';
-	} else if (!/^[\w-.]+@[\w-]+(\.[a-zA-Z0-9]+)+$/.test(values.email)) {
-		errors.email = '邮箱格式错误';
+		errors.email = emailValidation.requiredMsg;
+	} else if (!emailValidation.match.test(values.email)) {
+		errors.email = emailValidation.matchMsg;
 	}
 
 	if (!values.password) {
-		errors.password = '请填写密码';
+		errors.password = passwordValidation.requiredMsg;
+	} else if (!passwordValidation.match.test(values.password)) {
+		errors.password = passwordValidation.matchMsg;
 	}
 
 	if (!values.repassword) {
-		errors.repassword = '请填写密码';
+		errors.repassword = '请确认密码';
 	} else if (values.repassword !== values.password) {
 		errors.repassword = '密码不一致';
 	}
 
 	return errors;
+}
+
+// 异步验证邮箱是否已注册
+const asyncValidate = values => {
+	return usersApi.checkEmailUnique(values.email)
+		.then(res => {
+			if (res.data !== null) {
+				throw {
+					email: '邮箱已注册'
+				}
+			}
+		})
 }
 
 const renderField = ({
@@ -38,17 +59,26 @@ const renderField = ({
 	type,
 	meta: {
 		touched,
+		asyncValidating,
 		error
 	}
 }) => {
+
 	const iconClass = `iconfont ${icon}`;
+	const fail = touched && error;
+	const success = !asyncValidating && touched && !error;
+
 	return (
 		<div className="users-box">
       <div className="users-item">
         <i className={iconClass}></i>
         <input {...input} placeholder={label} type={type}/>
+        {success && (<i className="iconfont icon-selected"></i>)}
+        {asyncValidating && (<Loading circle="0.8rem" />)}
       </div>
-      <p className="users-errors">{touched && (error && <span>{error}</span>)}</p>
+      <p className="users-errors">
+        {fail && (<span><i className="iconfont icon-warming"></i>{error}</span>)}
+      </p>
     </div>
 	)
 }
@@ -63,24 +93,49 @@ class RegisterForm extends Component {
 		return (
 			<div className="users">
         <menu>
-          <Link to="/login"><span>登录</span></Link>
-          <Link to="/register" className="active"><span>注册</span></Link>
+          <Link to="/login">
+            <span>登录</span>
+          </Link>
+          <Link to="/register" className="active">
+            <span>注册</span>
+          </Link>
         </menu>
         <form className="users-form" onSubmit={handleSubmit}>
-          <Field name="email" type="text" label="*邮箱" icon="icon-mail" component={renderField} />
-          <Field name="password" type="password" label="*密码" icon="icon-password" component={renderField} />
-          <Field name="repassword" type="password" label="*确认密码" icon="icon-password" component={renderField} />
+          <Field
+            name="email"
+            type="text"
+            label="*邮箱"
+            icon="icon-mail"
+            component={renderField}
+          />
+          <Field
+            name="password"
+            type="password"
+            label="*密码"
+            icon="icon-password"
+            component={renderField}
+          />
+          <Field
+            name="repassword"
+            type="password"
+            label="*确认密码"
+            icon="icon-password"
+            component={renderField}
+          />
           <div className="users-submit">
-            <button type="submit" disabled={submiting} className="btn">{submiting? '注册中...': '注册'}</button>
+            <button type="submit" disabled={submiting} className="btn">
+              {submiting? '注册中...': '注册'}
+            </button>
           </div>
         </form>
       </div>
-
 		);
 	}
 }
 
 export default reduxForm({
-	form: 'login',
-	validate
+	form: 'register',
+	validate,
+	asyncValidate,
+	asyncBlurFields: ['email']
 })(RegisterForm);

@@ -1,4 +1,10 @@
 import mongoose from 'mongoose';
+import {
+  emailValidation,
+  nicknameValidation,
+  passwordValidation
+} from '../../common/constants/validation';
+
 
 const Schema = mongoose.Schema;
 
@@ -8,17 +14,19 @@ const UserSchema = new Schema({
     index: true,
     unique: true,
     trim: true,
-    match: [/^[\w-.]+@[\w-]+(.[a-zA-Z0-9]+)+$/, '邮箱格式错误']
+    match: [emailValidation.match, emailValidation.matchMsg]
   },
   nickname: {
     type: String,
     index: true,
     trim: true,
-    match: [/^.{2,8}$/, '昵称为2-8位的字符'],
+    match: [nicknameValidation.match, nicknameValidation.matchMsg],
   },
   password: {
     type: String,
     required: true,
+    trim: true,
+    match: [passwordValidation.match, passwordValidation.matchMsg]
   },
   // 1-普通用户 2-管理员 3-超级管理员
   identity: {
