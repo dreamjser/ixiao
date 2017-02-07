@@ -7,12 +7,26 @@ import ReactDOM from 'react-dom';
 import LoginForm from './loginForm';
 
 class Login extends Component {
-	handleSubmit(values) {
-		console.log(values);
+	handleSubmit(onLogin, values) {
+		onLogin(values)
+      .then(res => {
+        const data = res.data;
+
+        if(data.code === 0){
+          alert('登录成功');
+        }else{
+          alert(data.msg);
+        }
+      });
 	}
 	render() {
+    const {
+      isFetching,
+      onLogin
+    } = this.props;
+
 		return (
-			<LoginForm onSubmit={this.handleSubmit.bind(this)} />
+			<LoginForm submiting={isFetching} onSubmit={this.handleSubmit.bind(this, onLogin)} />
 		)
 	}
 }

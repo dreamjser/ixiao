@@ -6,13 +6,16 @@ export default app => {
   // GET: /checkEmailUnique?email=xxxx
 	app.get('/checkEmailUnique', (req, res, next) => {
 		const email = req.query.email;
+    const params = {
+      email
+    };
 
-		User.getUserByEmail(email)
+		User.getUser(params)
 			.then(r => res.send(r));
 	});
 
   // POST: /doRegister
-  // params :{email,nickname,password}
+  // params :{email,password,token}
   app.post('/doRegister', (req, res) => {
     const params = req.body;
     params.password = md5(params.password);
@@ -25,7 +28,29 @@ export default app => {
         return;
     }
 
+    delete params.token;
+
     User.addUser(params)
+      .then(r => res.send(r));
+  });
+
+  // POST: /doRegister
+  // params :{email,password,token}
+  app.post('/doLogin', (req, res) => {
+    const params = req.body;
+    params.password = md5(params.password);
+
+    if(params.token !== req.session.token){
+        res.send({
+          code: 2,
+          msg: 'token已过期，请刷新'
+        })
+        return;
+    }
+
+    delete params.token;
+
+    User.getUser(params)
       .then(r => res.send(r));
   });
 }

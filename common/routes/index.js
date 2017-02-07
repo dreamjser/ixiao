@@ -7,8 +7,7 @@ import React from 'react';
 
 import App from '../containers/app';
 import Register from '../containers/register';
-
-import Login from '../components/users/login';
+import Login from '../containers/login';
 import Error404 from '../components/404';
 
 export default (

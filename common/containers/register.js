@@ -20,8 +20,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		onRegister: values => dispatch(fetchRegister(values)),
-    getToken: () => dispatch(fetchToken())
+		onRegister: values => dispatch(fetchRegister(values))
 	}
 };
 

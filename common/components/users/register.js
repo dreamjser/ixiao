@@ -13,11 +13,10 @@ class Register extends Component {
 	handleSubmit(onRegister, values) {
 		onRegister(values)
 			.then(res => {
-				const {
-					data
-				} = res;
+				const data = res.data;
 
 				if (data.code === 0) {
+          alert('注册成功');
           timeout(1000)
             .then(() => browserHistory.push('/login'));
 				} else if (data.code === 11000) {

@@ -20,11 +20,9 @@ export default {
       });
 	},
 
-  // 根据email获取用户信息
-	getUserByEmail(email) {
-		return User.findOne({
-			email: email
-		},{
+  // 获取用户数据
+  getUser(params){
+    return User.findOne(params,{
       email: 1
     }).exec()
       .then(data => ({
@@ -32,6 +30,6 @@ export default {
         data
       }))
       .catch(err => err);
-	}
+  }
 
 }

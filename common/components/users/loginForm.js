@@ -9,9 +9,17 @@ import {
 	reduxForm
 } from 'redux-form';
 import {
+  connect
+} from 'react-redux';
+
+import {
   emailValidation,
   passwordValidation
 } from '../../constants/validation';
+
+import {
+  fetchToken
+} from '../../actions/token';
 
 // 验证邮箱和密码
 const validate = values => {
@@ -61,15 +69,23 @@ const renderField = ({
 }
 
 class LoginForm extends Component {
+  componentDidMount() {
+    this.props.getToken();
+  }
 	render() {
 		const {
+      submiting,
 			handleSubmit
 		} = this.props;
 		return (
 			<div className="users">
         <menu>
-          <Link to="/login" className="active"><span>登录</span></Link>
-          <Link to="/register"><span>注册</span></Link>
+          <Link to="/login" className="active">
+            <span>登录</span>
+          </Link>
+          <Link to="/register">
+            <span>注册</span>
+          </Link>
         </menu>
         <form className="users-form" onSubmit={handleSubmit}>
           <Field
@@ -87,16 +103,35 @@ class LoginForm extends Component {
             component={renderField}
           />
           <div className="users-submit">
-            <button type="submit" className="btn">登录</button>
+            <button type="submit" className="btn">
+              {submiting? '登录中': '登录'}
+            </button>
           </div>
         </form>
       </div>
-
 		);
 	}
 }
 
-export default reduxForm({
+LoginForm = reduxForm({
 	form: 'login',
 	validate
 })(LoginForm);
+
+// container
+function mapStateToProps(state) {
+  return {
+    initialValues: state.token.data
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getToken: () => dispatch(fetchToken())
+  }
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginForm);
