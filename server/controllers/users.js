@@ -7,7 +7,10 @@ export default {
 		return user.save()
 			.then(data => ({
 				code: 0,
-				data
+				data:{
+          _id: data._id,
+          email: data.email
+        }
 			}))
       .catch(err => {
         if(!('code' in err)){
@@ -21,7 +24,9 @@ export default {
 	getUserByEmail(email) {
 		return User.findOne({
 			email: email
-		}).exec()
+		},{
+      email: 1
+    }).exec()
       .then(data => ({
         code: 0,
         data

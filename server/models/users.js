@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
 import {
   emailValidation,
-  nicknameValidation,
-  passwordValidation
+  nicknameValidation
 } from '../../common/constants/validation';
 
 
@@ -24,9 +23,7 @@ const UserSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,
-    trim: true,
-    match: [passwordValidation.match, passwordValidation.matchMsg]
+    required: true
   },
   // 1-普通用户 2-管理员 3-超级管理员
   identity: {

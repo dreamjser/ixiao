@@ -3,8 +3,11 @@ import './style.scss';
 import React, {
 	Component
 } from 'react';
-import ReactDOM from 'react-dom';
+import {
+	browserHistory
+} from 'react-router';
 import RegisterForm from './registerForm';
+import timeout from '../../api/timeout';
 
 class Register extends Component {
 	handleSubmit(onRegister, values) {
@@ -14,11 +17,14 @@ class Register extends Component {
 					data
 				} = res;
 
-        if(data.code === 0){
-          alert(111);
-        }else if(data.code === 11000){
-          alert('邮箱已注册！');
-        }
+				if (data.code === 0) {
+          timeout(1000)
+            .then(() => browserHistory.push('/login'));
+				} else if (data.code === 11000) {
+					alert('邮箱已注册！');
+				} else {
+					alert(data.msg);
+				}
 			});
 	}
 	render() {

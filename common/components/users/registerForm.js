@@ -9,11 +9,20 @@ import {
 	reduxForm
 } from 'redux-form';
 import {
+	connect
+} from 'react-redux';
+
+import {
+	fetchToken
+} from '../../actions/token';
+
+import {
 	emailValidation,
 	passwordValidation
 } from '../../constants/validation';
-import Token from '../../containers/token';
+
 import Loading from '../../components/loading';
+
 import checkEmailUnique from '../../api/checkEmailUnique';
 
 // 验证邮箱和密码
@@ -85,6 +94,9 @@ const renderField = ({
 }
 
 class RegisterForm extends Component {
+	componentDidMount() {
+		this.props.getToken();
+	}
 	render() {
 		const {
 			handleSubmit,
@@ -102,7 +114,11 @@ class RegisterForm extends Component {
           </Link>
         </menu>
         <form className="users-form" onSubmit={handleSubmit}>
-          <Token name="token" />
+          <Field
+            name="token"
+            type="hidden"
+            component="input"
+          />
           <Field
             name="email"
             type="text"
@@ -135,9 +151,28 @@ class RegisterForm extends Component {
 	}
 }
 
-export default reduxForm({
+RegisterForm = reduxForm({
 	form: 'register',
 	validate,
 	asyncValidate,
 	asyncBlurFields: ['email']
 })(RegisterForm);
+
+
+// container
+function mapStateToProps(state) {
+	return {
+		initialValues: state.token.data
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		getToken: () => dispatch(fetchToken())
+	}
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(RegisterForm);

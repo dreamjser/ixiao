@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import session from 'express-session';
 
 // 服务器端路由
@@ -23,11 +24,7 @@ import config from '../config';
 const app = express();
 const port = config.port;
 
-if (process.env.NODE_ENV !== 'production') {
-	app.use(devMiddleWare());
-	app.use(hotMiddleware());
-	app.use('/static', express.static('static'));
-}
+app.use(cookieParser());
 
 app.use(session({
   secret: 'ixiao',
@@ -37,6 +34,12 @@ app.use(session({
     maxAge: 10 * 60 * 1000
   }
 }));
+
+if (process.env.NODE_ENV !== 'production') {
+	app.use(devMiddleWare());
+	app.use(hotMiddleware());
+	app.use('/static', express.static('static'));
+}
 
 app.use(bodyParser.json());
 

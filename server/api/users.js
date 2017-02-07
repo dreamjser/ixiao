@@ -1,3 +1,4 @@
+import md5 from 'md5';
 import User from '../controllers/users';
 
 export default app => {
@@ -10,10 +11,20 @@ export default app => {
 			.then(r => res.send(r));
 	});
 
-  // POST: /register
+  // POST: /doRegister
   // params :{email,nickname,password}
   app.post('/doRegister', (req, res) => {
     const params = req.body;
+    params.password = md5(params.password);
+
+    if(params.token !== req.session.token){
+        res.send({
+          code: 2,
+          msg: 'token已过期，请刷新'
+        })
+        return;
+    }
+
     User.addUser(params)
       .then(r => res.send(r));
   });

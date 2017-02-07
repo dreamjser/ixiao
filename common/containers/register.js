@@ -7,6 +7,10 @@ import {
 	fetchRegister,
 } from '../actions/register';
 
+import {
+  fetchToken
+} from '../actions/token';
+
 // container
 function mapStateToProps(state) {
 	return {
@@ -16,7 +20,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		onRegister: values => dispatch(fetchRegister(values))
+		onRegister: values => dispatch(fetchRegister(values)),
+    getToken: () => dispatch(fetchToken())
 	}
 };
 
