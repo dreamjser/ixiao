@@ -13,7 +13,11 @@ class Login extends Component {
         const data = res.data;
 
         if(data.code === 0){
-          alert('登录成功');
+          if(data.data !== null){
+            alert('登录成功');
+          }else{
+            alert('用户名或密码错误');
+          }
         }else{
           alert(data.msg);
         }

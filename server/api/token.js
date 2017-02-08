@@ -6,6 +6,6 @@ export default app => {
     }
     res.send({
       token: req.session.token
-    })
+    });
   });
 }
