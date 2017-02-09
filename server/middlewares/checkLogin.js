@@ -1,57 +1,45 @@
 import md5 from 'md5';
 import {
-	createClient
+  createClient
 } from 'redis';
 import User from '../controllers/users';
 
 const client = createClient();
 
 export default (req, res, next) => {
-	const {
-		email,
-		auth
-	} = req.cookies;
+  const {
+    email,
+    auth
+  } = req.cookies;
 
-	let error = null;
+  let error = null;
 
-  const redisAuth = client.get(email);
+  client.get(email, (err, r) => {
+    if (auth !== r) {
+      error = {
+        code: 101,
+        msg: '登录已过期'
+      };
+    }
 
-  console.log(`auth:${redisAuth}`);
-  if(auth === redisAuth){
+    if (error) {
+      res.send(error);
+    } else {
+      next();
+    }
+  });
+  return;
+  console.log(redisAuth, auth);
+  if (auth !== redisAuth) {
     error = {
       code: 101,
       msg: '登录已过期'
     };
   }
 
-	if (error) {
-		res.send(error);
-	} else {
-		next();
-	}
-
-	// User.getUser({
-	// 		email
-	// 	})
-	// 	.then(r => {
-	// 		if (r.code === 0 && r.data) {
-	// 			if (auth !== md5(r.data._id)) {
-	// 				error = {
-	//            code: 100,
-	//            msg: '登录失败'
-	//          }
-	// 			}
-	// 		}else{
-	//        error = {
-	//          code: 101,
-	//          msg: '登录已过期'
-	//        }
-	//      }
-
-	//      if(error){
-	//        throw error;
-	//      }
-	// 	})
-
-
+  if (error) {
+    res.send(error);
+  } else {
+    next();
+  }
 }

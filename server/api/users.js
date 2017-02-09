@@ -7,10 +7,6 @@ import checkLogin from '../middlewares/checkLogin';
 
 const client = createClient();
 
-client.on("error", function(err) {
-  console.log("Error " + err);
-});
-
 // 检查token是否一致
 const checkToken = (req, res, token) => {
   let check = true;
@@ -48,34 +44,6 @@ export default app => {
     res.send({
       code: 0
     })
-  });
-
-  app.get('/checkLogin', (req, res) => {
-    const {
-      email,
-      auth
-    } = req.cookies;
-
-    User.getUser({
-        email
-      })
-      .then(r => {
-        let data = {
-          code: 1,
-          msg: '未登录'
-        }
-
-        if (r.code === 0 && r.data) {
-          if (auth === md5(r.data._id)) {
-            data = {
-              code: 0,
-              msg: '已登录'
-            }
-          }
-        }
-
-        res.send(data)
-      })
   });
 
   // GET: /checkEmailUnique?email=xxxx
