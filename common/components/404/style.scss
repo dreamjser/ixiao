@@ -1,0 +1,23 @@
+@import '../../../static/src/sass/base/_variables';
+@import '../../../static/src/sass/base/_mixins';
+
+.error{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding-top: 200px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #444;
+  h1{
+    color: #fcd606;
+    font-size: 200px;
+  }
+  p{
+    margin-top: -60px;
+    color: #f50a69;
+    font-size: 180px;
+  }
+}
