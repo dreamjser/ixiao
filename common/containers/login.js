@@ -7,10 +7,6 @@ import {
   fetchLogin,
 } from '../actions/login';
 
-import {
-  fetchToken
-} from '../actions/token';
-
 // container
 function mapStateToProps(state) {
   return {

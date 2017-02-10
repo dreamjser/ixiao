@@ -23,7 +23,10 @@ export default {
   // 获取用户数据
   getUser(params){
     return User.findOne(params,{
-      email: 1
+      email: 1,
+      likes: 1,
+      nickname: 1,
+      identity: 1
     }).exec()
       .then(data => ({
         code: 0,

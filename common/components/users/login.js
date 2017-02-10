@@ -3,7 +3,7 @@ import './style.scss';
 import React, {
 	Component
 } from 'react';
-import ReactDOM from 'react-dom';
+
 import LoginForm from './loginForm';
 
 class Login extends Component {

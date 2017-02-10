@@ -1,21 +1,17 @@
 import doLogin from '../api/doLogin';
 
 export const REQUEST_LOGIN = 'REQUEST_LOGIN';
-export const requestLogin = (isFetching) => {
-  return {
+export const requestLogin = (isFetching) => ({
     type: REQUEST_LOGIN,
     isFetching,
-  }
-}
+});
 
 export const RESPONSE_LOGIN = 'RESPONSE_LOGIN';
-export const responseLogin = (isFetching, data) => {
-  return {
+export const responseLogin = (isFetching, data) => ({
     type: RESPONSE_LOGIN,
     isFetching,
     data
-  }
-}
+});
 
 export const fetchLogin = params => {
   return dispatch => {
@@ -23,4 +19,4 @@ export const fetchLogin = params => {
     return doLogin(params)
       .then(json => dispatch(responseLogin(false, json)))
   }
-}
+};

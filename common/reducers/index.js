@@ -7,10 +7,12 @@ import {
 import register from './register';
 import login from './login';
 import token from './token';
+import my from './my';
 
 export const rootReducer = combineReducers({
 	register,
   login,
   token,
+  my,
 	form: formReducer
 })

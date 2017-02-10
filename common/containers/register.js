@@ -7,10 +7,6 @@ import {
 	fetchRegister,
 } from '../actions/register';
 
-import {
-  fetchToken
-} from '../actions/token';
-
 // container
 function mapStateToProps(state) {
 	return {

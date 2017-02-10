@@ -7,19 +7,25 @@ import User from '../controllers/users';
 const client = createClient();
 
 export default (req, res, next) => {
+  let error = null;
+  const ERROR = {
+    code: 110,
+    msg: '登录已过期'
+  };
+
+  if(!('email' in req.cookies)){
+    res.send(ERROR);
+    return;
+  }
+
   const {
     email,
     auth
   } = req.cookies;
 
-  let error = null;
-
   client.get(email, (err, r) => {
     if (auth !== r) {
-      error = {
-        code: 101,
-        msg: '登录已过期'
-      };
+      error = ERROR;
     }
 
     if (error) {
@@ -28,18 +34,4 @@ export default (req, res, next) => {
       next();
     }
   });
-  return;
-  console.log(redisAuth, auth);
-  if (auth !== redisAuth) {
-    error = {
-      code: 101,
-      msg: '登录已过期'
-    };
-  }
-
-  if (error) {
-    res.send(error);
-  } else {
-    next();
-  }
 }

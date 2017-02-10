@@ -40,12 +40,6 @@ const setAuthCookie = (res, params) => {
 
 export default app => {
 
-  app.get('/my', checkLogin, (req, res) => {
-    res.send({
-      code: 0
-    })
-  });
-
   // GET: /checkEmailUnique?email=xxxx
   app.get('/checkEmailUnique', (req, res, next) => {
     const email = req.query.email;
@@ -97,5 +91,14 @@ export default app => {
         }
         res.send(r)
       });
+  });
+
+  app.get('/getUserInfo', checkLogin, (req, res) => {
+    const email = req.cookies.email;
+
+    User.getUser({
+      email
+    })
+      .then(r => res.send(r));
   });
 }

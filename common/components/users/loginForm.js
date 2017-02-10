@@ -1,12 +1,12 @@
 import React, {
-	Component
+  Component
 } from 'react';
 import {
-	Link
+  Link
 } from 'react-router';
 import {
-	Field,
-	reduxForm
+  Field,
+  reduxForm
 } from 'redux-form';
 import {
   connect
@@ -41,21 +41,21 @@ const validate = values => {
 }
 
 const renderField = ({
-	input,
-	label,
-	icon,
-	type,
-	meta: {
-		touched,
-		error
-	}
+  input,
+  label,
+  icon,
+  type,
+  meta: {
+    touched,
+    error
+  }
 }) => {
-	const iconClass = `iconfont ${icon}`;
+  const iconClass = `iconfont ${icon}`;
   const fail = touched && error;
   const success = touched && !error;
 
-	return (
-		<div className="users-box">
+  return (
+    <div className="users-box">
       <div className="users-item">
         <i className={iconClass}></i>
         <input {...input} placeholder={label} type={type}/>
@@ -65,20 +65,20 @@ const renderField = ({
         {fail && (<span><i className="iconfont icon-warming"></i>{error}</span>)}
       </p>
     </div>
-	)
+  )
 }
 
 class LoginForm extends Component {
   componentDidMount() {
     this.props.getToken();
   }
-	render() {
-		const {
+  render() {
+    const {
       submiting,
-			handleSubmit
-		} = this.props;
-		return (
-			<div className="users">
+      handleSubmit
+    } = this.props;
+    return (
+      <div className="users">
         <menu>
           <Link to="/login" className="active">
             <span>登录</span>
@@ -109,13 +109,13 @@ class LoginForm extends Component {
           </div>
         </form>
       </div>
-		);
-	}
+    );
+  }
 }
 
 LoginForm = reduxForm({
-	form: 'login',
-	validate
+  form: 'login',
+  validate
 })(LoginForm);
 
 // container
