@@ -29,10 +29,7 @@ app.use(cookieParser());
 app.use(session({
   secret: 'ixiao',
   resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 30 * 60 * 1000
-  }
+  saveUninitialized: true
 }));
 
 if (process.env.NODE_ENV !== 'production') {
@@ -54,12 +51,12 @@ app.use('/admin', adminRouter);
 // 主页面路由
 app.use('/', indexRouter);
 
-console.log(process.env.NODE_ENV);
+console.log(`当前环境：${process.env.NODE_ENV}`);
 
 app.listen(port, function (error) {
 	if (error) {
 		console.error(error)
 	} else {
-		console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
+		console.info(`http://localhost:${port}`)
 	}
 })
