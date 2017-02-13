@@ -1,5 +1,5 @@
 module.exports = {
-  port: 8000,
+  port: 3000,
   static: '//s1.dreamjser.com/',
   db: '//localhost/ixiao'
 }
