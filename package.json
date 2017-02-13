@@ -7,7 +7,7 @@
   "author": "sunyg <1169771179@qq.com>",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=production nodemon server/index.js",
+    "start": "NODE_ENV=production forever start server/index.js",
     "dev": "NODE_ENV=development nodemon server/index.js",
     "prod:js": "NODE_ENV=production webpack --config webpack.prod.js --profile --colors --display-modules",
     "prod": "NODE_ENV=production gulp prod"
@@ -16,6 +16,7 @@
     "antd": "^2.6.4",
     "antd-mobile": "^0.9.14",
     "body-parser": "^1.16.0",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "express-session": "^1.15.0",
     "isomorphic-fetch": "^2.2.1",
