@@ -12,7 +12,7 @@ class My extends Component{
       data,
       isFetching
     } = this.props;
-    console.log(data);
+
     return (
       <div className="my">
         个人中心页

@@ -40,7 +40,7 @@ router.get('*', (req, res) => {
   }, (err, redirectLocation, renderProps) => {
 
     if (err) {
-      console.error(err);
+      console.error(`err: ${err}`);
       return res.status(500).end('Internal server error');
     }
 
@@ -67,7 +67,7 @@ router.get('*', (req, res) => {
         })
       })
       .catch(err => {
-        console.log(err)
+        console.log(3333);
         res.render('index', {
           html: '',
           initState: JSON.stringify({}),
