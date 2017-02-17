@@ -1,0 +1,50 @@
+@import '../../../static/src/sass/base/_variables';
+@import '../../../static/src/sass/base/_mixins';
+
+.my{
+  .my-head{
+    height: 270px;
+    padding: 40px 0 20px;
+    text-align: center;
+    background-color: #fff;
+  }
+  .head-box{
+    img{
+      width: 140px;
+      height: 140px;
+    }
+    p{
+      margin-top: 8px;
+      font-size: 40px;
+      color: $font-color;
+    }
+  }
+
+  .my-list{
+    margin-top: 80px;
+    border-top: 1px $border-color solid;
+    background-color: #fff;
+    a{
+      display: block;
+      position: relative;
+      padding: 20px 40px;
+      color: $font-color;
+      font-size: 36px;
+      border-bottom: 1px $border-color solid;
+    }
+    i{
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      margin-right: 12px;
+      font-size: 36px;
+    }
+    .icon-more{
+      position: absolute;
+      right: 0px;
+    }
+  }
+  .my-logout{
+    margin: 60px 40px 0;
+  }
+}

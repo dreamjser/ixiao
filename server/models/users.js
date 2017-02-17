@@ -19,7 +19,6 @@ const UserSchema = new Schema({
     type: String,
     index: true,
     trim: true,
-    match: [nicknameValidation.match, nicknameValidation.matchMsg],
   },
   password: {
     type: String,

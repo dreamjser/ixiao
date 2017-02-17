@@ -55,6 +55,8 @@ export default app => {
   // params :{email,password,token}
   app.post('/doRegister', (req, res) => {
     const params = req.body;
+    const emailMatch = params.email.match(/([\w.-]+)@/);
+
     params.password = md5(params.password);
 
     if (!checkToken(req, res, params.token)) {
@@ -62,6 +64,8 @@ export default app => {
     }
 
     delete params.token;
+
+    emailMatch && (params.nickname = emailMatch[1]);
 
     User.addUser(params)
       .then(r => {
@@ -76,6 +80,7 @@ export default app => {
   // params :{email,password,token}
   app.post('/doLogin', (req, res) => {
     const params = req.body;
+
     params.password = md5(params.password);
 
     if (!checkToken(req, res, params.token)) {

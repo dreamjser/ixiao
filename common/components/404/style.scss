@@ -2,15 +2,11 @@
 @import '../../../static/src/sass/base/_mixins';
 
 .error{
-  position: absolute;
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
   padding: 160px 0 400px;
   text-align: center;
   font-weight: bold;
-  background-color: #efefef;
   h1{
     color: #fcd606;
     font-size: 160px;

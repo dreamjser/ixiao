@@ -4,6 +4,7 @@
 .users{
   menu{
     display: flex;
+    background-color: #fff;
     a{
       display: block;
       padding: 20px 0;
@@ -28,8 +29,9 @@
   }
 
   .users-form{
-    width: 560px;
-    margin: 100px auto 0;
+    padding: 40px 40px 60px;
+    margin: 60px auto 0;
+    background-color: #fff;
   }
   .users-errors{
     height: 60px;
