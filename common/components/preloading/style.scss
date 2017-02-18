@@ -1,0 +1,28 @@
+@import '../../../static/src/sass/base/_variables';
+@import '../../../static/src/sass/base/_mixins';
+
+.preloading{
+  position: absolute;
+  display: flex;
+  width: 16rem;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  .preloading-box{
+    width: 200px;
+    margin-top: -160px;
+    padding: 12px 0 16px;
+    background-color: rgba(0,0,0,.6);
+    border-radius: 8px;
+    text-align: center;
+  }
+  p{
+    font-size: 24px;
+    color: #fff;
+  }
+}

@@ -30,6 +30,10 @@ const setAuthCookie = (res, params) => {
     maxAge
   });
 
+  res.cookie('data', JSON.stringify(params), {
+    maxAge
+  });
+
   res.cookie('auth', md5(params._id), {
     httpOnly: true,
     maxAge

@@ -1,12 +1,12 @@
 import {
-  REQUEST_MY,
-  RESPONSE_MY,
+  REQUEST_LOGOUT,
+  RESPONSE_LOGOUT,
 } from '../actions/my';
 
 const reducer = (state = {}, action) => {
   switch (action.type) {
-  case REQUEST_MY:
-  case RESPONSE_MY:
+  case REQUEST_LOGOUT:
+  case RESPONSE_LOGOUT:
     return {
       data: action.data,
       isFetching: action.isFetching

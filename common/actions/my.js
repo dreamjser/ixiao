@@ -1,22 +1,20 @@
-import getUserInfo from '../api/getUserInfo';
-
-export const REQUEST_MY = 'REQUEST_MY';
-export const requestMy = (isFetching) => ({
-  type: REQUEST_MY,
+export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
+export const requestLogout = (isFetching) => ({
+  type: REQUEST_LOGOUT,
   isFetching
 });
 
-export const RESPONSE_MY = 'RESPONSE_MY';
-export const responseMy = (isFetching, data) => ({
-  type: RESPONSE_MY,
+export const RESPONSE_LOGOUT = 'RESPONSE_LOGOUT';
+export const responseLogout = (isFetching, data) => ({
+  type: RESPONSE_LOGOUT,
   isFetching,
   data
 })
 
-export const fetchMy = () => {
+export const fetchLogout = () => {
   return dispatch => {
-    dispatch(requestMy(true));
+    dispatch(requestLogout(true));
     return getUserInfo()
-      .then(json => dispatch(responseMy(false, json)));
+      .then(json => dispatch(responseLogout(false, json)));
   }
 }

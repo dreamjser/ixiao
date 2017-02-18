@@ -5,7 +5,7 @@ import {
 import My from '../components/my';
 
 import {
-  fetchMy
+  fetchLogout
 } from '../actions/my';
 
 function mapStateToProps(state) {
@@ -17,7 +17,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return{
-    getUserInfo: () => dispatch(fetchMy())
+    doLogout: () => dispatch(fetchLogout())
   }
 }
 

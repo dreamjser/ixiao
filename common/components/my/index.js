@@ -1,92 +1,81 @@
 import './style.scss';
 
+import cookie from 'react-cookie';
 import React, {
-  Component
+	Component
 } from 'react';
 
 import {
-  Link
+	Link
 } from 'react-router';
 
-const headUrl = 'http://upload.dreamjser.com/images/20170217/1487310478.png';
+import Preloading from '../preloading';
 
-const getUrl = (url, code) => {
-  const loginUrl = '/login';
+const myData = cookie.load('data');
 
-  if(code !== 0){
-    url = loginUrl;
-  }
+const headUrl = '//upload.dreamjser.com/images/20170217/1487310478.png';
 
-  return url;
+const getUrl = (url) => {
+	const loginUrl = '/login';
+
+	if (!myData) {
+		url = loginUrl;
+	}
+
+	return url;
 }
 
-class My extends Component{
-  componentDidMount(){
-    this.props.getUserInfo();
-  }
-
-  render(){
+class My extends Component {
+	render() {
     const {
-      data,
-      isFetching
+      isFetching,
+      doLogout
     } = this.props;
 
-    const code = data? data.code: -1;
-
-    return (
-      <div className="my">
-        <div className="my-head">
+		return (
+			<div className="my">
+        <div className="my-container">
+          <div className="my-head">
+            <div className="head-box">
+              <img src={headUrl} alt=""/>
+              <p>
+                {myData? myData.nickname: '点击头像登录'}
+              </p>
+            </div>
+          </div>
+          <ul className="my-list">
+            <li>
+              <Link to={getUrl('/mypublish')}>
+                <i className="iconfont icon-edit"></i>
+                我的发布
+                <i className="iconfont icon-more"></i>
+              </Link>
+            </li>
+            <li>
+              <Link to={getUrl('/mycollect')}>
+                <i className="iconfont icon-collection"></i>
+                我的收藏
+                <i className="iconfont icon-more"></i>
+              </Link>
+            </li>
+            <li>
+              <Link to={getUrl('/mycomment')}>
+                <i className="iconfont icon-news"></i>
+                我的评论
+                <i className="iconfont icon-more"></i>
+              </Link>
+            </li>
+          </ul>
           {
-            data && code === 0 &&
-              (
-                <div className="head-box">
-                  <img src={headUrl} alt=""/>
-                  <p>{data.data.nickname}</p>
-                </div>
-              )
-          }
-          {
-            data && code !== 0 &&
-              (
-                <Link className="head-box" to="/login">
-                  <img src={headUrl} alt=""/>
-                  <p>点击头像登录</p>
-                </Link>
-              )
+            myData &&
+            <div className="my-logout">
+              <button className="btn">退出</button>
+            </div>
           }
         </div>
-        <ul className="my-list">
-          <li>
-            <Link to={getUrl('/mypublish', code)}>
-              <i className="iconfont icon-edit"></i>
-              我的发布
-              <i className="iconfont icon-more"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to={getUrl('/mycollect', code)}>
-              <i className="iconfont icon-collection"></i>
-              我的收藏
-              <i className="iconfont icon-more"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to={getUrl('/mycomment', code)}>
-              <i className="iconfont icon-news"></i>
-              我的评论
-              <i className="iconfont icon-more"></i>
-            </Link>
-          </li>
-        </ul>
-        {
-          data && data.code === 0 &&
-          <div className="my-logout">
-            <button className="btn">退出</button>
-          </div>
-        }
       </div>
-    )
-  }
+		)
+	}
 }
 
 export default My;
