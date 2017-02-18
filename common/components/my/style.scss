@@ -9,6 +9,18 @@
     background-color: #fff;
   }
   .head-box{
+    position: relative;
+    a{
+      display: block;
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 0;
+      z-index: 1;
+    }
     img{
       width: 140px;
       height: 140px;
