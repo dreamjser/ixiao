@@ -6,8 +6,8 @@ let webpackConfig = require('./webpack.base.js');
 webpackConfig = deepAssign(webpackConfig, {
   entry: {
     'ixiao': [
+      'webpack-hot-middleware/client',
       'client/index.js',
-      'webpack-hot-middleware/client'
     ]
   },
   output: {
@@ -44,7 +44,7 @@ webpackConfig = deepAssign(webpackConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'framework'
     }),
