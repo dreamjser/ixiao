@@ -2,11 +2,11 @@ import './style.scss';
 
 import cookie from 'react-cookie';
 import React, {
-	Component
+  Component
 } from 'react';
 
 import {
-	Link
+  Link
 } from 'react-router';
 
 import Preloading from '../preloading';
@@ -14,26 +14,26 @@ import Preloading from '../preloading';
 const headUrl = '//upload.dreamjser.com/images/20170217/1487310478.png';
 
 const getUrl = (url, myData) => {
-	const loginUrl = '/login';
+  const loginUrl = '/login';
 
-	if (!myData) {
-		url = loginUrl;
-	}
+  if (!myData) {
+    url = loginUrl;
+  }
 
-	return url;
+  return url;
 }
 
 class My extends Component {
-	render() {
+  render() {
     const {
       isFetching,
       doLogout
     } = this.props;
 
     const myData = cookie.load('data');
-    console.log(myData);
-		return (
-			<div className="my">
+
+    return (
+      <div className="my">
         <div className="my-container">
           <div className="my-head">
             <div className="head-box">
@@ -78,8 +78,7 @@ class My extends Component {
           }
         </div>
       </div>
-		)
-	}
+    )
+  }
 }
-
 export default My;
