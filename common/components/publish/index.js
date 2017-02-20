@@ -10,6 +10,10 @@ import {
   RichUtils
 } from 'draft-js';
 
+import {
+  stateToHTML
+} from 'draft-js-export-html';
+
 class Publish extends Component {
 
   constructor(props) {
@@ -17,15 +21,27 @@ class Publish extends Component {
     this.state = {
       editorState: EditorState.createEmpty()
     };
-    this.onChange = (editorState) => this.setState({
+  }
+
+  onChange(editorState) {
+    this.setState({
       editorState
     });
   }
+
   render() {
     return (
       <div className="publish">
         <h1>发布笑话</h1>
-        <Editor editorState={this.state.editorState} onChange={this.onChange} />
+        <Editor
+          refs="editor"
+          editorState={this.state.editorState}
+          onChange={this.onChange.bind(this)}
+          placeholder="分享最新最好玩的笑话~"
+        />
+        <div className="publish-submit">
+          <button className="btn">提交</button>
+        </div>
       </div>
     );
   }
