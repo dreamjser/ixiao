@@ -42,6 +42,24 @@ const setAuthCookie = (res, params) => {
   client.set(params.email, md5(params._id));
 };
 
+const clearAuthCookie = (res, email) => {
+  const maxAge = -1;
+
+  res.cookie('email', '', {
+    maxAge
+  });
+
+  res.cookie('data', '', {
+    maxAge
+  });
+
+  res.cookie('auth', '', {
+    maxAge
+  })
+
+  client.del(email);
+};
+
 export default app => {
 
   // GET: /checkEmailUnique?email=xxxx
@@ -100,6 +118,20 @@ export default app => {
         }
         res.send(r)
       });
+  });
+
+  app.post('/doLogout', (req, res) => {
+    let email = '';
+
+    if('email' in req.cookies){
+      email = req.cookies.email;
+    }
+
+    clearAuthCookie(res, email);
+
+    res.send({
+      code: 0
+    });
   });
 
   app.get('/getUserInfo', checkLogin, (req, res) => {

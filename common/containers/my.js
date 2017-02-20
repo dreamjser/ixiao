@@ -17,7 +17,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return{
-    doLogout: () => dispatch(fetchLogout())
+    onLogout: () => dispatch(fetchLogout())
   }
 }
 

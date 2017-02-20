@@ -1,3 +1,5 @@
+import doLogout from '../api/doLogout';
+
 export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
 export const requestLogout = (isFetching) => ({
   type: REQUEST_LOGOUT,
@@ -14,7 +16,7 @@ export const responseLogout = (isFetching, data) => ({
 export const fetchLogout = () => {
   return dispatch => {
     dispatch(requestLogout(true));
-    return getUserInfo()
+    return doLogout()
       .then(json => dispatch(responseLogout(false, json)));
   }
 }

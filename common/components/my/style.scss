@@ -21,9 +21,24 @@
       top: 0;
       z-index: 1;
     }
-    img{
+    .head-icon{
       width: 140px;
       height: 140px;
+      line-height: 132px;
+      margin: auto;
+      border: 6px #885b38 solid;
+      border-radius: 50%;
+      font-size: 100px;
+      text-align: center;
+      color: #885b38;
+      text-transform: uppercase;
+    }
+    .head-bg{
+      width: 140px;
+      height: 140px;
+      margin: auto;
+      background: url(./head.png) no-repeat center;
+      background-size: cover;
     }
     p{
       margin-top: 8px;

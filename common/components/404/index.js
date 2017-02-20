@@ -9,10 +9,7 @@ import ReactDOM from 'react-dom';
 class Error404 extends Component {
 	render() {
 		return (
-			<div className="error">
-        <h1>404</h1>
-        <p>ERROR</p>
-      </div>
+			<div className="error"></div>
 		)
 	}
 }

@@ -11,8 +11,6 @@ import {
 
 import Preloading from '../preloading';
 
-const headUrl = '//upload.dreamjser.com/images/20170217/1487310478.png';
-
 const getUrl = (url, myData) => {
   const loginUrl = '/login';
 
@@ -27,7 +25,7 @@ class My extends Component {
   render() {
     const {
       isFetching,
-      doLogout
+      onLogout
     } = this.props;
 
     const myData = cookie.load('data');
@@ -37,11 +35,15 @@ class My extends Component {
         <div className="my-container">
           <div className="my-head">
             <div className="head-box">
-              <img src={headUrl} alt=""/>
               {
-                !myData &&
-                <Link to="login"></Link>
+                myData?
+                <div className="head-icon">{myData.nickname.substring(0,1)}</div>:
+                <div>
+                  <div className="head-bg"></div>
+                  <Link to="login"></Link>
+                </div>
               }
+
               <p>
                 {myData? myData.nickname: '点击头像登录'}
               </p>
@@ -73,7 +75,7 @@ class My extends Component {
           {
             myData &&
             <div className="my-logout">
-              <button className="btn">退出</button>
+              <button className="btn" onClick={onLogout}>退出</button>
             </div>
           }
         </div>

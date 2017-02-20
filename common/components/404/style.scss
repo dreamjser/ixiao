@@ -2,18 +2,13 @@
 @import '../../../static/src/sass/base/_mixins';
 
 .error{
-  width: 100%;
+  position: absolute;
+  width: 640px;
   height: 100%;
-  padding: 160px 0 400px;
-  text-align: center;
-  font-weight: bold;
-  h1{
-    color: #fcd606;
-    font-size: 160px;
-  }
-  p{
-    margin-top: -40px;
-    color: #f50a69;
-    font-size: 140px;
-  }
+  left: 0;
+  right: 0;
+  top: -100px;
+  margin: auto;
+  background: #fff url(./404.jpg) no-repeat center;
+  background-size: 312px;
 }
