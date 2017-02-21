@@ -8,7 +8,7 @@ webpackConfig = deepAssign(webpackConfig, {
     'ixiao': [
       'webpack-hot-middleware/client',
       'client/index.js',
-    ]
+    ],
   },
   output: {
     publicPath: '/static/src',

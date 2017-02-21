@@ -12,17 +12,13 @@ html
     meta(name="apple-touch-fullscreen" content="yes")
     meta(name="apple-mobile-web-app-status-bar-style" content="black")
     meta(name="format-detection" content="telephone=no,email=no")
-    link(rel="icon" href=assetsObject['icon.png'] type="image/png")
-    link(size="57*57" href=assetsObject['icon.png'] rel="apple-touch-icon-precomposed")
-    link(size="72*72" href=assetsObject['icon.png'] rel="apple-touch-icon-precomposed")
-    link(size="114 *114" href=assetsObject['icon.png'] rel="apple-touch-icon-precomposed")
-    link(size="144*144" href=assetsObject['icon.png'] rel="apple-touch-icon-precomposed")
+    include tpl/_icon.pug
     include tpl/_flex.pug
-    link(rel="stylesheet" href=assetsObject['css/ixiao.css'])
+    link(rel="stylesheet" href=assetsObject['ixiao']['css'])
   body
     div#root
       div !{html}
     script.
       window.__INITIAL_STATE__ = !{initState};
-    script(src=assetsObject['js/framework.js'])
-    script(src=assetsObject['js/ixiao.js'])
+    script(src=assetsObject['framework']['js'])
+    script(src=assetsObject['ixiao']['js'])

@@ -7,7 +7,10 @@ const assetsObject = null;
 assetsObject = assets;
 
 for(let p in assetsObject){
-  assetsObject[p] = config.static + assetsObject[p];
+  let obj = assetsObject[p];
+  for(let p in obj){
+    obj[p] = obj[p];
+  }
 }
 
 if(process.env.NODE_ENV !== 'production'){

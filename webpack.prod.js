@@ -1,6 +1,9 @@
 const webpack = require('webpack');
+const path = require('path');
 const deepAssign = require('deep-assign');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const AssetsPlugin = require('assets-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
 const config = require('./config');
 
 let webpackConfig = require('./webpack.base.js');
@@ -13,7 +16,8 @@ webpackConfig = deepAssign(webpackConfig, {
   },
   output: {
     publicPath: config.static,
-    filename: 'js/[name].js',
+    path: path.resolve(__dirname, 'static/dist'),
+    filename: 'js/[name].[chunkhash].js',
   },
   module: {
     rules: [{
@@ -33,12 +37,16 @@ webpackConfig = deepAssign(webpackConfig, {
       exclude: [
         /node_modules/
       ],
-      loader: 'url'
+      loader: 'file?name=files/[name].[hash].[ext]'
     }]
   },
   plugins: [
+    new AssetsPlugin({
+      path: path.join(__dirname, 'server'),
+      filename: 'assets.json'
+    }),
     new ExtractTextPlugin({
-      filename: 'css/[name].css',
+      filename: 'css/[name].[contenthash].css',
       allChunks: true
     }),
     new webpack.optimize.CommonsChunkPlugin({
@@ -51,7 +59,8 @@ webpackConfig = deepAssign(webpackConfig, {
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
-    })
+    }),
+    new WebpackMd5Hash(),
   ]
 });
 
