@@ -5,6 +5,10 @@ import React, {
 } from 'react';
 
 import {
+  Link
+} from 'react-router';
+
+import {
   Editor,
   EditorState,
   RichUtils
@@ -13,6 +17,8 @@ import {
 import {
   stateToHTML
 } from 'draft-js-export-html';
+
+import cookie from 'react-cookie';
 
 class Publish extends Component {
 
@@ -30,6 +36,7 @@ class Publish extends Component {
   }
 
   render() {
+    const myData = cookie.load('data');
     return (
       <div className="publish">
         <h1>发布笑话</h1>
@@ -40,7 +47,11 @@ class Publish extends Component {
           placeholder="分享最新最好玩的笑话~"
         />
         <div className="publish-submit">
-          <button className="btn">提交</button>
+          {
+            myData?
+            <button className="btn">提交</button>:
+            <Link className="btn" to="/login">登录</Link>
+          }
         </div>
       </div>
     );
