@@ -3,7 +3,6 @@ const path = require('path');
 const deepAssign = require('deep-assign');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const AssetsPlugin = require('assets-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
 const config = require('./config');
 
 let webpackConfig = require('./webpack.base.js');
@@ -60,7 +59,6 @@ webpackConfig = deepAssign(webpackConfig, {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    // new WebpackMd5Hash(),
   ]
 });
 

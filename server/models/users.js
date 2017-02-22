@@ -4,7 +4,6 @@ import {
   nicknameValidation
 } from '../../common/constants/validation';
 
-
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
