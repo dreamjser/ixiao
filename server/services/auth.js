@@ -6,7 +6,7 @@ import {
 const client = createClient();
 
 export default {
-  clear(res, params) {
+  clear(res, email) {
     const maxAge = -1;
 
     res.cookie('email', '', {
@@ -30,11 +30,11 @@ export default {
     res.cookie('data', JSON.stringify(params), {
       maxAge
     });
-    res.cookie('auth', md5(params._id), {
+    res.cookie('auth', md5(params.email), {
       httpOnly: true,
       maxAge
     })
 
-    client.set(params.email, md5(params._id));
+    client.set(params.email, md5(params.email));
   }
 }

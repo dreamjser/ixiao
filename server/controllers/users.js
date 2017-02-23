@@ -43,14 +43,59 @@ class CUsers {
   checkUser(req, res){
     const email = req.query.email;
 
-    this.user.selectUser(email, r => res.send(r));
+    this.user.selectUserByEmail(email, r => res.send(r));
+  }
+
+  checkLogin(req, res){
+    const params = req.body;
+
+    const vData = {
+      email: params.email,
+      password: params.password
+    };
+
+    if (!checkToken(req, res, params.token)) {
+      return;
+    }
+
+    validator.validate(vData);
+
+    if(validator.hasError()){
+      res.send({
+        code: 101,
+        msg: validator.message
+      });
+      return;
+    }
+
+    params.password = md5(params.password);
+
+    this.user.selectUserLogin(params, r => {
+      if (r.code === 0) {
+        r.data && auth.set(res, r.data);
+      }
+      res.send(r);
+    });
+  }
+
+  doLogout(req, res){
+    let email = '';
+
+    if('email' in req.cookies){
+      email = req.cookies.email;
+    }
+
+    auth.clear(res, email);
+
+    res.send({
+      code: 0
+    });
   }
 
   // 添加用户
   addUser(req, res){
     const params = req.body;
     const emailMatch = params.email.match(/([\w.-]+)@/);
-    let result;
 
     const vData = {
       email: params.email,
@@ -75,7 +120,12 @@ class CUsers {
 
     params.password = md5(params.password);
 
-    this.user.insertUser(params, r => res.send(r));
+    this.user.insertUser(params, r => {
+      if (r.code === 0) {
+        r.data && auth.set(res, r.data);
+      }
+      res.send(r);
+    });
   }
 }
 

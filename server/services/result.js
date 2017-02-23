@@ -4,7 +4,7 @@ export default (error, data) => {
   if(error){
     result = {
       code: 102,
-      msg: '数据错误'
+      error
     };
   }else{
     result = {
