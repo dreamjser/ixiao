@@ -1,40 +1,37 @@
-import mongoose from 'mongoose';
-import {
-  emailValidation,
-  nicknameValidation
-} from '../../common/constants/validation';
+import getResult from '../services/result';
 
-const Schema = mongoose.Schema;
+class MUsers {
+  constructor(connect){
+    this.connect = connect;
+  }
 
-const UserSchema = new Schema({
-  email: {
-    type: String,
-    index: true,
-    unique: true,
-    trim: true,
-    match: [emailValidation.match, emailValidation.matchMsg]
-  },
-  nickname: {
-    type: String,
-    index: true,
-    trim: true,
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  // 1-普通用户 2-管理员 3-超级管理员
-  identity: {
-    type: Number,
-    default: 1
-  },
-  createTime: {
-    type: Number,
-    default: Date.now()
-  },
-  likes: Array
-});
+  // 插入用户数据
+  insertUser(params, cb){
+    const {
+      email,
+      nickname,
+      password
+    } = params;
+    const createtime = +new Date();
+    const sql = `insert into users (email,nickname,password,createtime) values ('${email}','${nickname}','${password}',${createtime})`;
 
-const Users = mongoose.model('users', UserSchema);
+    this.connect.query(sql, (error, results, fields) => {
+      const r = getResult(error, {});
 
-export default Users;
+      cb(r);
+    });
+  }
+
+  selectUser(email, cb){
+    const sql = `select email,nickname from users where email = '${email}' limit 1`;
+
+    this.connect.query(sql, (error, results, fields) => {
+      const result = !error? results[0]: {};
+      const r = getResult(error, result);
+
+      cb(r);
+    });
+  }
+}
+
+export default MUsers;

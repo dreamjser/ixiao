@@ -1,38 +1,82 @@
-import User from '../models/users';
+import md5 from 'md5';
+import MUsers from '../models/users';
+import checkLogin from '../middlewares/checkLogin';
+import validator from '../services/validator';
+import auth from '../services/auth';
+import {
+  emailValidation,
+  passwordValidation
+} from '../../common/constants/validation';
 
-export default {
-  // 添加用户
-	addUser(params) {
-		const user = new User(params);
-		return user.save()
-			.then(data => ({
-				code: 0,
-				data:{
-          _id: data._id,
-          email: data.email
-        }
-			}))
-      .catch(err => {
-        if(!('code' in err)){
-          err.code = 1;
-        }
-        return err;
-      });
-	},
+validator.config = {
+  email: {
+    match: emailValidation.match,
+    msg: emailValidation.matchMsg
+  },
+  password: {
+    match: passwordValidation.match,
+    msg: passwordValidation.matchMsg
+  }
+}
 
-  // 获取用户数据
-  getUser(params){
-    return User.findOne(params,{
-      email: 1,
-      likes: 1,
-      nickname: 1,
-      identity: 1
-    }).exec()
-      .then(data => ({
-        code: 0,
-        data
-      }))
-      .catch(err => err);
+// 检查token是否一致
+const checkToken = (req, res, token) => {
+  let check = true;
+
+  if (token !== req.session.token) {
+    res.send({
+      code: 2,
+      msg: 'token已过期，请刷新'
+    });
+    check = false;
   }
 
+  return check;
+};
+
+class CUsers {
+  constructor(connect){
+    this.user = new MUsers(connect);
+  }
+
+  // 检查用户
+  checkUser(req, res){
+    const email = req.query.email;
+
+    this.user.selectUser(email, r => res.send(r));
+  }
+
+  // 添加用户
+  addUser(req, res){
+    const params = req.body;
+    const emailMatch = params.email.match(/([\w.-]+)@/);
+    let result;
+
+    const vData = {
+      email: params.email,
+      password: params.password
+    };
+
+    if (!checkToken(req, res, params.token)) {
+      return;
+    }
+
+    validator.validate(vData);
+
+    if(validator.hasError()){
+      res.send({
+        code: 101,
+        msg: validator.message
+      });
+      return;
+    }
+
+    emailMatch && (params.nickname = emailMatch[1]);
+
+    params.password = md5(params.password);
+
+    this.user.insertUser(params, r => res.send(r));
+  }
 }
+
+export default CUsers;

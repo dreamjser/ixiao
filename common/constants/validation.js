@@ -5,11 +5,6 @@ export const emailValidation = {
   matchMsg: '邮箱格式错误'
 };
 
-export const nicknameValidation = {
-  match: /^\S{2,8}$/,
-  matchMsg: '昵称为2-8位的非空白字符'
-};
-
 export const passwordValidation = {
   required: true,
   requiredMsg: '请填写密码',

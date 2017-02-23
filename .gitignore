@@ -3,3 +3,4 @@ node_modules
 static/src/js
 static/src/css
 
+server/config/connect.js

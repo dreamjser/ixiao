@@ -3,7 +3,6 @@ const path = require('path');
 const deepAssign = require('deep-assign');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const AssetsPlugin = require('assets-webpack-plugin');
-const config = require('./config');
 
 let webpackConfig = require('./webpack.base.js');
 
@@ -14,7 +13,7 @@ webpackConfig = deepAssign(webpackConfig, {
     ],
   },
   output: {
-    publicPath: config.static,
+    publicPath: '//s1.dreamjser.com/',
     path: path.resolve(__dirname, 'static/dist'),
     filename: 'js/[name].[chunkhash:16].js',
   },

@@ -11,7 +11,7 @@ import adminRouter from './routes/admin';
 import setApi from './api';
 
 // 链接数据库
-import db from './config/connect.js';
+import connect from './config/connect.js';
 
 // 开发工具
 import {
@@ -19,10 +19,8 @@ import {
 	hotMiddleware
 } from './devtools';
 
-import config from '../config';
-
 const app = express();
-const port = config.port;
+const port = 3000;
 
 app.use(cookieParser());
 
@@ -44,7 +42,7 @@ app.use(bodyParser.json());
 app.set('views', './server/views');
 app.set('view engine', 'pug');
 
-setApi(app);
+setApi(app, connect);
 // 后台管理路由
 app.use('/admin', adminRouter);
 

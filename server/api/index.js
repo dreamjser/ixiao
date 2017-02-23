@@ -1,8 +1,8 @@
 import setUserApi from './users';
 import setTokenApi from './token';
 
-export default app => {
-  setUserApi(app);
-  setTokenApi(app);
+export default (app, connect) => {
+  setUserApi(app, connect);
+  setTokenApi(app, connect);
 }
 
