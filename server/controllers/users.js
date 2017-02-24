@@ -4,18 +4,18 @@ import checkLogin from '../middlewares/checkLogin';
 import validator from '../services/validator';
 import auth from '../services/auth';
 import {
-  emailValidation,
-  passwordValidation
+  vEmail,
+  vPassword
 } from '../../common/constants/validation';
 
 validator.config = {
   email: {
-    match: emailValidation.match,
-    msg: emailValidation.matchMsg
+    match: vEmail.match,
+    msg: vEmail.matchMsg
   },
   password: {
-    match: passwordValidation.match,
-    msg: passwordValidation.matchMsg
+    match: vPassword.match,
+    msg: vPassword.matchMsg
   }
 }
 

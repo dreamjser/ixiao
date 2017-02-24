@@ -13,8 +13,8 @@ import {
 } from 'react-redux';
 
 import {
-  emailValidation,
-  passwordValidation
+  vEmail,
+  vPassword
 } from '../../constants/validation';
 
 import {
@@ -26,15 +26,15 @@ const validate = values => {
   const errors = {};
 
   if (!values.email) {
-    errors.email = emailValidation.requiredMsg;
-  } else if (!emailValidation.match.test(values.email)) {
-    errors.email = emailValidation.matchMsg;
+    errors.email = vEmail.requiredMsg;
+  } else if (!vEmail.match.test(values.email)) {
+    errors.email = vEmail.matchMsg;
   }
 
   if (!values.password) {
-    errors.password = passwordValidation.requiredMsg;
-  } else if (!passwordValidation.match.test(values.password)) {
-    errors.password = passwordValidation.matchMsg;
+    errors.password = vPassword.requiredMsg;
+  } else if (!vPassword.match.test(values.password)) {
+    errors.password = vPassword.matchMsg;
   }
 
   return errors;

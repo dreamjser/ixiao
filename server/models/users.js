@@ -32,7 +32,7 @@ class MUsers {
     this.connect.query(sql, (error, results, fields) => {
       const result = !error? (results[0] || null): null;
       const r = getResult(error, result);
-
+      // console.log(error);
       cb(r);
     });
   }
