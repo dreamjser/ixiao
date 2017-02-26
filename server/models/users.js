@@ -27,12 +27,14 @@ class MUsers {
   }
 
   selectUserByEmail(email, cb){
-    const sql = `select email,nickname from users where email = '${email}' limit 1`;
+    const connect = this.connect;
+    email = connect.escape(email);
+    const sql = `select email,nickname from users where email = ${email} limit 1`;
 
     this.connect.query(sql, (error, results, fields) => {
       const result = !error? (results[0] || null): null;
       const r = getResult(error, result);
-      // console.log(error);
+
       cb(r);
     });
   }

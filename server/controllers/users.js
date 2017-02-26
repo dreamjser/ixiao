@@ -3,6 +3,7 @@ import MUsers from '../models/users';
 import checkLogin from '../middlewares/checkLogin';
 import validator from '../services/validator';
 import auth from '../services/auth';
+import checkToken from '../services/checkToken';
 import {
   vEmail,
   vPassword
@@ -19,21 +20,6 @@ validator.config = {
   }
 }
 
-// 检查token是否一致
-const checkToken = (req, res, token) => {
-  let check = true;
-
-  if (token !== req.session.token) {
-    res.send({
-      code: 2,
-      msg: 'token已过期，请刷新'
-    });
-    check = false;
-  }
-
-  return check;
-};
-
 class CUsers {
   constructor(connect){
     this.user = new MUsers(connect);
@@ -46,17 +32,18 @@ class CUsers {
     this.user.selectUserByEmail(email, r => res.send(r));
   }
 
+  // 检查登录
   checkLogin(req, res){
     const params = req.body;
+
+    if (!checkToken(req, res, params.token)) {
+      return;
+    }
 
     const vData = {
       email: params.email,
       password: params.password
     };
-
-    if (!checkToken(req, res, params.token)) {
-      return;
-    }
 
     validator.validate(vData);
 
@@ -78,6 +65,7 @@ class CUsers {
     });
   }
 
+  // 登出
   doLogout(req, res){
     let email = '';
 
@@ -97,14 +85,14 @@ class CUsers {
     const params = req.body;
     const emailMatch = params.email.match(/([\w.-]+)@/);
 
+    if (!checkToken(req, res, params.token)) {
+      return;
+    }
+
     const vData = {
       email: params.email,
       password: params.password
     };
-
-    if (!checkToken(req, res, params.token)) {
-      return;
-    }
 
     validator.validate(vData);
 
