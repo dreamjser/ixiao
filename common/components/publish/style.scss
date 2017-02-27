@@ -11,6 +11,16 @@
   .publish-submit{
     margin: 40px 20px 0;
   }
+  .publish-title{
+    margin: 40px 20px 0;
+    input{
+      width: 100%;
+      padding: 16px;
+      font-size: 28px;
+      border: 1px $border-color solid;
+      border-radius: 8px;
+    }
+  }
 }
 
 .DraftEditor-root {
@@ -18,7 +28,6 @@
   margin: 20px;
   background: #fff;
   border: 1px solid #ddd;
-  font-family: 'Georgia', serif;
   font-size: 14px;
   padding: 15px;
   border-radius: 8px;

@@ -40,11 +40,14 @@ class Publish extends Component {
     return (
       <div className="publish">
         <h1>发布笑话</h1>
+        <div className="publish-title">
+          <input type="text" placeholder="*请输入标题(20字符以内)"/>
+        </div>
         <Editor
           refs="editor"
           editorState={this.state.editorState}
           onChange={this.onChange.bind(this)}
-          placeholder="分享最新最好玩的笑话~"
+          placeholder="*分享最新最好玩的笑话(500字符以内)"
         />
         <div className="publish-submit">
           {
