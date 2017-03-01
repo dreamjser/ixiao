@@ -62,7 +62,6 @@ class Publish extends Component {
     onSubmit(params).
       then(res => {
         res = res.data;
-
         if(res.code === 0){
           alert("发布成功");
         }
