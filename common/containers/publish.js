@@ -10,7 +10,8 @@ import {
 // container
 function mapStateToProps(state) {
   return {
-    isFetching: state.publish.isFetching
+    isFetching: state.publish.isFetching,
+    data: state.publish.data
   }
 }
 

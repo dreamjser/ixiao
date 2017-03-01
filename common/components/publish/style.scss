@@ -12,7 +12,7 @@
     margin: 40px 20px 0;
   }
   .publish-title{
-    margin: 40px 20px 0;
+    margin: 0 20px;
     input{
       width: 100%;
       padding: 16px;
@@ -31,7 +31,7 @@
   font-size: 14px;
   padding: 15px;
   border-radius: 8px;
-  font-size: 32px;
+  font-size: 28px;
   color: $font-color;
 }
 
@@ -54,6 +54,10 @@
 
 .DraftEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
   display: none;
+}
+
+.public-DraftEditorPlaceholder-root{
+  color: #9197a3 !important;
 }
 
 .DraftEditor-editor .DraftEditor-blockquote {

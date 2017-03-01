@@ -10,7 +10,7 @@ export default (req, res, next) => {
   let error = null;
   const ERROR = {
     code: 110,
-    msg: '登录已过期'
+    msg: '未登录'
   };
 
   if(!('email' in req.cookies)){
